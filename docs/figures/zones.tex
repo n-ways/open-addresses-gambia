@@ -1,0 +1,36 @@
+% The seven code zones and the density of compounds (registry, 2 km cells).
+% Data: zones-outline.dat, density.dat, zones-label.dat (tools/paper_data.py).
+\documentclass[border=2mm]{standalone}
+\usepackage{fontspec}\setmainfont{LibertinusSans}[Extension=.otf,UprightFont=*-Regular,BoldFont=*-Bold]
+\usepackage{pgfplots}\pgfplotsset{compat=1.18, /pgf/number format/assume math mode=true}
+\definecolor{ink}{HTML}{0C1C8C}
+% \tr{English}{French}: the figure's language; <name>-fr.tex sets \figfr and inputs this file.
+\ifdefined\figfr\newcommand{\tr}[2]{#2}\pgfkeys{/pgf/number format/.cd, use comma, 1000 sep={\,}}\else\newcommand{\tr}[2]{#1}\fi
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[width=16cm, axis equal image, xmin=298, xmax=636, ymin=1440, ymax=1528,
+  xlabel={\tr{Easting, UTM 28N (km)}{Abscisse, UTM 28N (km)}}, ylabel={\tr{Northing (km)}{Ordonnée (km)}}, tick label style={font=\scriptsize},
+  label style={font=\small}, unbounded coords=jump,
+  colormap={dens}{rgb255(0cm)=(222,226,244); rgb255(1cm)=(120,135,205); rgb255(2cm)=(12,28,140); rgb255(3cm)=(206,17,38)},
+  colorbar horizontal, point meta min=0, point meta max=9.1,
+  colorbar style={width=6cm, height=0.25cm, at={(1,1.04)}, anchor=south east, xticklabel style={font=\scriptsize},
+    xtick={0,2.303,4.605,6.908}, xticklabels={1,10,100,1\,000},
+    xlabel={\tr{compounds per 2 km cell}{concessions par maille de 2 km}}, xlabel style={font=\scriptsize, at={(0,1)}, anchor=south west, yshift=-1mm}}]
+\addplot[scatter, only marks, mark=square*, mark size=1.28pt, scatter/use mapped color={draw=mapped color, fill=mapped color},
+  point meta={ln(\thisrow{count})}] table[x=x, y=y] {density.dat};
+\end{axis}
+% outlines and keys in a second, identical axis so that they are drawn over the density marks
+\begin{axis}[width=16cm, axis equal image, xmin=298, xmax=636, ymin=1440, ymax=1528, hide axis, unbounded coords=jump]
+\addplot[black, line width=0.5pt] table[x=x, y=y] {zones-outline.dat};
+\tikzset{zl/.style={font=\footnotesize\bfseries, fill=white, fill opacity=0.8, text opacity=1, inner sep=1.2pt}}
+% zone keys at the compound-weighted centroids of zones-label.dat; Banjul and Kanifing are pinned out
+\node[zl] at (axis cs:437.0,1482.7) {LRR};
+\node[zl] at (axis cs:385.7,1495.7) {NBR};
+\node[zl] at (axis cs:506.3,1502.5) {CRR};
+\node[zl] at (axis cs:590.2,1477.4) {URR};
+\node[zl] at (axis cs:330.0,1460.0) {WCR};
+\draw[black] (axis cs:329.1,1487.8) -- (axis cs:338,1514) node[zl, anchor=south] {BJL};
+\draw[black] (axis cs:318.2,1487.2) -- (axis cs:312,1514) node[zl, anchor=south] {KMC};
+\end{axis}
+\end{tikzpicture}
+\end{document}

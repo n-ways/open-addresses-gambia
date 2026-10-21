@@ -1,0 +1,25 @@
+N-Ways Addressing for The Gambia, © N-WAYS LIMITED (nways.ng)
+https://github.com/n-ways/open-addresses-gambia
+
+This product includes software developed by N-WAYS LIMITED: The Gambia's
+home-code engine, registry server and tools (engine/, server/, tools/),
+licensed under the Apache License, Version 2.0 (LICENSE).
+
+Any redistribution or derivative work of the code, in source or binary form,
+must keep this NOTICE and show the credit line
+
+    N-Ways Addressing for The Gambia, © N-WAYS LIMITED (nways.ng)
+
+in its documentation, its "about", credits or licences screen, or wherever
+such third-party notices normally appear (Apache License 2.0, section 4(d)).
+
+The data (registry/, model/) is licensed separately under ODbL 1.0
+(LICENSE-DATA) and the documents (docs/) under CC BY 4.0 (LICENSE-DOCS). See
+LICENSING.md for how to credit each.
+
+The Plus Code routines in engine/reference/gm_engine.py are an independent
+implementation of the public Open Location Code specification
+(https://github.com/google/open-location-code), the grid of The Gambia's
+National Digital Addressing Policy (2023). The UTM zone 28N routines follow
+C. F. F. Karney (2011), "Transverse Mercator with an accuracy of a few
+nanometers", J. Geodesy 85(8).

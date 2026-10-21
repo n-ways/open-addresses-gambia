@@ -1,0 +1,482 @@
+{
+ "plus": [
+  {
+   "place": "Arch 22, Banjul",
+   "lat": 13.4527,
+   "lon": -16.5782,
+   "plusCode": "7C55FC3C+3PM",
+   "short": "FC3C+3PM",
+   "zone": "BJL"
+  },
+  {
+   "place": "Westfield junction, Serrekunda",
+   "lat": 13.4426,
+   "lon": -16.6767,
+   "plusCode": "7C55C8VF+28V",
+   "short": "C8VF+28V",
+   "zone": "KMC"
+  },
+  {
+   "place": "Bakau market (approx.)",
+   "lat": 13.4783,
+   "lon": -16.6787,
+   "plusCode": "7C55F8HC+8GF",
+   "short": "F8HC+8GF",
+   "zone": "KMC"
+  },
+  {
+   "place": "Brikama market (approx.)",
+   "lat": 13.2717,
+   "lon": -16.6476,
+   "plusCode": "7C5579C2+MXJ",
+   "short": "79C2+MXJ",
+   "zone": "WCR"
+  },
+  {
+   "place": "Farafenni (approx.)",
+   "lat": 13.5667,
+   "lon": -15.6,
+   "plusCode": "7C56HC82+M2J",
+   "short": "HC82+M2J",
+   "zone": "NBR"
+  },
+  {
+   "place": "Janjanbureh (approx.)",
+   "lat": 13.5333,
+   "lon": -14.7667,
+   "plusCode": "7C57G6MM+88F",
+   "short": "G6MM+88F",
+   "zone": "CRR"
+  },
+  {
+   "place": "Basse Santa Su (approx.)",
+   "lat": 13.3097,
+   "lon": -14.2137,
+   "plusCode": "7C578Q5P+VGM",
+   "short": "8Q5P+VGM",
+   "zone": "URR"
+  }
+ ],
+ "check": [
+  {
+   "family": 0,
+   "number": 100,
+   "payload": "0000000100",
+   "digit": 7
+  },
+  {
+   "family": 12,
+   "number": 2512,
+   "payload": "0001202512",
+   "digit": 5
+  },
+  {
+   "family": 1234,
+   "number": 45128,
+   "payload": "0123445128",
+   "digit": 8
+  },
+  {
+   "family": 99999,
+   "number": 99999,
+   "payload": "9999999999",
+   "digit": 2
+  }
+ ],
+ "numbers": [
+  {
+   "number": 120,
+   "written": "120",
+   "spoken": "one hundred and twenty"
+  },
+  {
+   "number": 2512,
+   "written": "2512",
+   "spoken": "twenty-five, twelve"
+  },
+  {
+   "number": 9071,
+   "written": "9071",
+   "spoken": "ninety, seventy-one"
+  },
+  {
+   "number": 45128,
+   "written": "45 128",
+   "spoken": "forty-five, one hundred and twenty-eight"
+  },
+  {
+   "number": 10307,
+   "written": "10 307",
+   "spoken": "ten, three hundred and seven"
+  }
+ ],
+ "nameKeys": [
+  {
+   "a": "Serrekunda",
+   "b": "Serre Kunda",
+   "key": "serekunda",
+   "same": true
+  },
+  {
+   "a": "Kerr Mbaye",
+   "b": "Keur Mbaye",
+   "key": "kermbai",
+   "same": true
+  },
+  {
+   "a": "Sukuta",
+   "b": "Sukkuta",
+   "key": "sukuta",
+   "same": true
+  },
+  {
+   "a": "Suwareh",
+   "b": "Suware",
+   "key": "suwar",
+   "same": true
+  },
+  {
+   "a": "Ndungu Kebbeh",
+   "b": "Ndungu Kebbe",
+   "key": "ndungukeb",
+   "same": true
+  },
+  {
+   "a": "Bakau",
+   "b": "Bakoteh",
+   "key": "bakau",
+   "same": false
+  },
+  {
+   "a": "Brusubi 1",
+   "b": "Brusubi",
+   "key": "brusubi",
+   "same": true
+  }
+ ],
+ "sameName": [
+  {
+   "typed": "Brikama 1015",
+   "lieu": "CRR/71",
+   "officialName": "Brikama",
+   "family": 199,
+   "digits": 4,
+   "block": [
+    1000,
+    1099
+   ],
+   "home": "Brikama 1015",
+   "written": "BRIKAMA 1015 · CENTRAL RIVER",
+   "machine": "GM-CRR-0071-1015-0",
+   "spoken": "Brikama, ten, fifteen",
+   "decoded": [
+    "CRR/71"
+   ]
+  },
+  {
+   "typed": "Brikama 1190",
+   "lieu": "CRR/73",
+   "officialName": "Brikama Nding",
+   "family": 199,
+   "digits": 4,
+   "block": [
+    1100,
+    1699
+   ],
+   "home": "Brikama 1190",
+   "written": "BRIKAMA 1190 · CENTRAL RIVER",
+   "machine": "GM-CRR-0073-1190-9",
+   "spoken": "Brikama, eleven, ninety",
+   "decoded": [
+    "CRR/73"
+   ]
+  },
+  {
+   "typed": "Brikama 1715",
+   "lieu": "LRR/17",
+   "officialName": "Brikama",
+   "family": 199,
+   "digits": 4,
+   "block": [
+    1700,
+    1799
+   ],
+   "home": "Brikama 1715",
+   "written": "BRIKAMA 1715 · LOWER RIVER",
+   "machine": "GM-LRR-0017-1715-7",
+   "spoken": "Brikama, seventeen, fifteen",
+   "decoded": [
+    "LRR/17"
+   ]
+  },
+  {
+   "typed": "Brikama 1815",
+   "lieu": "NBR/54",
+   "officialName": "Brikama",
+   "family": 199,
+   "digits": 4,
+   "block": [
+    1800,
+    1899
+   ],
+   "home": "Brikama 1815",
+   "written": "BRIKAMA 1815 · NORTH BANK",
+   "machine": "GM-NBR-0054-1815-8",
+   "spoken": "Brikama, eighteen, fifteen",
+   "decoded": [
+    "NBR/54"
+   ]
+  },
+  {
+   "typed": "Sanchaba 10075",
+   "lieu": "NBR/376",
+   "officialName": "Sanchaba",
+   "family": 1445,
+   "digits": 5,
+   "block": [
+    10000,
+    10499
+   ],
+   "home": "Sanchaba 10 075",
+   "written": "SANCHABA 10 075 · NORTH BANK",
+   "machine": "GM-NBR-0376-10075-7",
+   "spoken": "Sanchaba, ten, oh seventy-five",
+   "decoded": [
+    "NBR/376"
+   ]
+  },
+  {
+   "typed": "Sanchaba 10710",
+   "lieu": "WCR/356",
+   "officialName": "Sanchaba",
+   "family": 1445,
+   "digits": 5,
+   "block": [
+    10500,
+    11899
+   ],
+   "home": "Sanchaba 10 710",
+   "written": "SANCHABA 10 710 · WEST COAST",
+   "machine": "GM-WCR-0356-10710-1",
+   "spoken": "Sanchaba, ten, seven hundred and ten",
+   "decoded": [
+    "WCR/356"
+   ]
+  },
+  {
+   "typed": "Sanchaba 13370",
+   "lieu": "WCR/357",
+   "officialName": "Sanchaba",
+   "family": 1445,
+   "digits": 5,
+   "block": [
+    11900,
+    21699
+   ],
+   "home": "Sanchaba 13 370",
+   "written": "SANCHABA 13 370 · WEST COAST",
+   "machine": "GM-WCR-0357-13370-7",
+   "spoken": "Sanchaba, thirteen, three hundred and seventy",
+   "decoded": [
+    "WCR/357"
+   ]
+  },
+  {
+   "typed": "Fula Kunda 10030",
+   "lieu": "CRR/141",
+   "officialName": "Fula Kunda",
+   "family": 384,
+   "digits": 5,
+   "block": [
+    10000,
+    10199
+   ],
+   "home": "Fula Kunda 10 030",
+   "written": "FULA KUNDA 10 030 · CENTRAL RIVER",
+   "machine": "GM-CRR-0141-10030-8",
+   "spoken": "Fula Kunda, ten, oh thirty",
+   "decoded": [
+    "CRR/141"
+   ]
+  },
+  {
+   "typed": "Fula Kunda 10230",
+   "lieu": "CRR/730",
+   "officialName": "Sololo Fulakunda",
+   "family": 384,
+   "digits": 5,
+   "block": [
+    10200,
+    10399
+   ],
+   "home": "Fulakunda 10 230",
+   "written": "FULAKUNDA 10 230 · CENTRAL RIVER",
+   "machine": "GM-CRR-0730-10230-4",
+   "spoken": "Fulakunda, ten, two hundred and thirty",
+   "decoded": [
+    "CRR/730"
+   ]
+  },
+  {
+   "typed": "Fula Kunda 10925",
+   "lieu": "WCR/111",
+   "officialName": "Fula Kunda",
+   "family": 384,
+   "digits": 5,
+   "block": [
+    10400,
+    13899
+   ],
+   "home": "Fula Kunda 10 925",
+   "written": "FULA KUNDA 10 925 · WEST COAST",
+   "machine": "GM-WCR-0111-10925-9",
+   "spoken": "Fula Kunda, ten, nine hundred and twenty-five",
+   "decoded": [
+    "WCR/111"
+   ]
+  },
+  {
+   "typed": "Fula Kunda 14965",
+   "lieu": "WCR/112",
+   "officialName": "Fula Kunda",
+   "family": 384,
+   "digits": 5,
+   "block": [
+    13900,
+    20999
+   ],
+   "home": "Fula Kunda 14 965",
+   "written": "FULA KUNDA 14 965 · WEST COAST",
+   "machine": "GM-WCR-0112-14965-4",
+   "spoken": "Fula Kunda, fourteen, nine hundred and sixty-five",
+   "decoded": [
+    "WCR/112"
+   ]
+  },
+  {
+   "typed": "Madina 1030",
+   "lieu": "CRR/406",
+   "officialName": "Madina",
+   "family": 1010,
+   "digits": 4,
+   "block": [
+    1000,
+    1199
+   ],
+   "home": "Madina 1030",
+   "written": "MADINA 1030 · CENTRAL RIVER",
+   "machine": "GM-CRR-0406-1030-4",
+   "spoken": "Madina, ten, thirty",
+   "decoded": [
+    "CRR/406"
+   ]
+  },
+  {
+   "typed": "Madina 1215",
+   "lieu": "CRR/407",
+   "officialName": "Madina",
+   "family": 1010,
+   "digits": 4,
+   "block": [
+    1200,
+    1299
+   ],
+   "home": "Madina 1215",
+   "written": "MADINA 1215 · CENTRAL RIVER",
+   "machine": "GM-CRR-0407-1215-2",
+   "spoken": "Madina, twelve, fifteen",
+   "decoded": [
+    "CRR/407"
+   ]
+  },
+  {
+   "typed": "Madina 1315",
+   "lieu": "CRR/408",
+   "officialName": "Madina",
+   "family": 1010,
+   "digits": 4,
+   "block": [
+    1300,
+    1399
+   ],
+   "home": "Madina 1315",
+   "written": "MADINA 1315 · CENTRAL RIVER",
+   "machine": "GM-CRR-0408-1315-8",
+   "spoken": "Madina, thirteen, fifteen",
+   "decoded": [
+    "CRR/408"
+   ]
+  },
+  {
+   "typed": "Madina 1430",
+   "lieu": "LRR/101",
+   "officialName": "Madina",
+   "family": 1010,
+   "digits": 4,
+   "block": [
+    1400,
+    1599
+   ],
+   "home": "Madina 1430",
+   "written": "MADINA 1430 · LOWER RIVER",
+   "machine": "GM-LRR-0101-1430-7",
+   "spoken": "Madina, fourteen, thirty",
+   "decoded": [
+    "LRR/101"
+   ]
+  }
+ ],
+ "plateNames": [
+  {
+   "officialName": "Brusubi Phase 1",
+   "plateName": "Brusubi 1",
+   "rule": "cleaned",
+   "needsCouncilChoice": false,
+   "home": "Brusubi 1 11 425",
+   "written": "BRUSUBI 1 11 425 · WEST COAST",
+   "machine": "GM-WCR-0061-11425-7",
+   "spoken": "Brusubi 1, eleven, four hundred and twenty-five",
+   "lieu": "WCR/61",
+   "decodedPlate": [
+    "WCR/61"
+   ],
+   "decodedOfficial": [
+    "WCR/61"
+   ]
+  },
+  {
+   "officialName": "Balanghar Kerjuri",
+   "plateName": "Kerjuri",
+   "rule": "council",
+   "needsCouncilChoice": true,
+   "home": "Kerjuri 1135",
+   "written": "KERJURI 1135 · CENTRAL RIVER",
+   "machine": "GM-CRR-0023-1135-7",
+   "spoken": "Kerjuri, eleven, thirty-five",
+   "lieu": "CRR/23",
+   "decodedPlate": [
+    "CRR/23"
+   ],
+   "decodedOfficial": [
+    "CRR/23"
+   ]
+  },
+  {
+   "officialName": "Busura",
+   "plateName": "Busura",
+   "rule": "as-is",
+   "needsCouncilChoice": false,
+   "home": "Busura 1045",
+   "written": "BUSURA 1045 · CENTRAL RIVER",
+   "machine": "GM-CRR-0081-1045-9",
+   "spoken": "Busura, ten, forty-five",
+   "lieu": "CRR/81",
+   "decodedPlate": [
+    "CRR/81"
+   ],
+   "decodedOfficial": [
+    "CRR/81"
+   ]
+  }
+ ]
+}

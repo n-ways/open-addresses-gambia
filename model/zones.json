@@ -1,0 +1,77 @@
+{
+ "frozen": "2026-10-20",
+ "crs": "EPSG:32628 (WGS 84 / UTM zone 28N), for the Hilbert frames",
+ "source": "OpenStreetMap admin_level=4 relations (ODbL), © OpenStreetMap contributors",
+ "zones": [
+  {
+   "key": "BJL",
+   "name": "Banjul",
+   "iso": "GM-B",
+   "wikidata": "Q3726",
+   "originE": 327000,
+   "originN": 1484000,
+   "frameMetres": 7000,
+   "index": 0
+  },
+  {
+   "key": "CRR",
+   "name": "Central River",
+   "iso": "GM-M",
+   "wikidata": "Q824431",
+   "originE": 450000,
+   "originN": 1473000,
+   "frameMetres": 110000,
+   "index": 1
+  },
+  {
+   "key": "KMC",
+   "name": "Kanifing",
+   "iso": "GM-KM",
+   "wikidata": "Q277397",
+   "originE": 313000,
+   "originN": 1483000,
+   "frameMetres": 16000,
+   "index": 2
+  },
+  {
+   "key": "LRR",
+   "name": "Lower River",
+   "iso": "GM-L",
+   "wikidata": "Q824421",
+   "originE": 363000,
+   "originN": 1463000,
+   "frameMetres": 119000,
+   "index": 3
+  },
+  {
+   "key": "NBR",
+   "name": "North Bank",
+   "iso": "GM-N",
+   "wikidata": "Q846161",
+   "originE": 331000,
+   "originN": 1471000,
+   "frameMetres": 137000,
+   "index": 4
+  },
+  {
+   "key": "URR",
+   "name": "Upper River",
+   "iso": "GM-U",
+   "wikidata": "Q824373",
+   "originE": 548000,
+   "originN": 1462000,
+   "frameMetres": 83000,
+   "index": 5
+  },
+  {
+   "key": "WCR",
+   "name": "West Coast",
+   "iso": "GM-W",
+   "wikidata": "Q846158",
+   "originE": 302000,
+   "originN": 1444000,
+   "frameMetres": 111000,
+   "index": 6
+  }
+ ]
+}

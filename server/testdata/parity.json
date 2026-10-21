@@ -1,0 +1,1525 @@
+{
+ "about": "Steps issued in order against server/testdata/registry, each with the number, forms and blocks the N-Ways issuer gives it.",
+ "cases": [
+  {
+   "step": {
+    "lat": 13.4443409,
+    "lng": -16.5749712
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-12746-5",
+    "home": "Banjul 12 746",
+    "written": "BANJUL 12 746 · BANJUL",
+    "number": 12746,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4455605,
+    "lng": -16.5747387
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-12313-5",
+    "home": "Banjul 12 313",
+    "written": "BANJUL 12 313 · BANJUL",
+    "number": 12313,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.445232,
+    "lng": -16.5728202
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-10168-8",
+    "home": "Banjul 10 168",
+    "written": "BANJUL 10 168 · BANJUL",
+    "number": 10168,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.455505,
+    "lng": -16.5802476
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-18302-2",
+    "home": "Banjul 18 302",
+    "written": "BANJUL 18 302 · BANJUL",
+    "number": 18302,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4556374,
+    "lng": -16.5793868
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-18991-8",
+    "home": "Banjul 18 991",
+    "written": "BANJUL 18 991 · BANJUL",
+    "number": 18991,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4564127,
+    "lng": -16.5754655
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-16743-1",
+    "home": "Banjul 16 743",
+    "written": "BANJUL 16 743 · BANJUL",
+    "number": 16743,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4608424,
+    "lng": -16.5810481
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-15996-7",
+    "home": "Banjul 15 996",
+    "written": "BANJUL 15 996 · BANJUL",
+    "number": 15996,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4576398,
+    "lng": -16.578776
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-17360-4",
+    "home": "Banjul 17 360",
+    "written": "BANJUL 17 360 · BANJUL",
+    "number": 17360,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4587157,
+    "lng": -16.5778791
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-16490-3",
+    "home": "Banjul 16 490",
+    "written": "BANJUL 16 490 · BANJUL",
+    "number": 16490,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4475902,
+    "lng": -16.5769653
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-11654-8",
+    "home": "Banjul 11 654",
+    "written": "BANJUL 11 654 · BANJUL",
+    "number": 11654,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4465372,
+    "lng": -16.5703942
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-10285-7",
+    "home": "Banjul 10 285",
+    "written": "BANJUL 10 285 · BANJUL",
+    "number": 10285,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4568529,
+    "lng": -16.576032
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-17272-3",
+    "home": "Banjul 17 272",
+    "written": "BANJUL 17 272 · BANJUL",
+    "number": 17272,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4510732,
+    "lng": -16.5701131
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-22512-3",
+    "home": "Banjul 22 512",
+    "written": "BANJUL 22 512 · BANJUL",
+    "number": 22512,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.457997,
+    "lng": -16.579059
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-17805-2",
+    "home": "Banjul 17 805",
+    "written": "BANJUL 17 805 · BANJUL",
+    "number": 17805,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4425355,
+    "lng": -16.5767846
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-10011-6",
+    "home": "Banjul 10 011",
+    "written": "BANJUL 10 011 · BANJUL",
+    "number": 10011,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4542937,
+    "lng": -16.5825752
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-13454-3",
+    "home": "Banjul 13 454",
+    "written": "BANJUL 13 454 · BANJUL",
+    "number": 13454,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4461232,
+    "lng": -16.5777187
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-12975-7",
+    "home": "Banjul 12 975",
+    "written": "BANJUL 12 975 · BANJUL",
+    "number": 12975,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4568669,
+    "lng": -16.5808425
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-18145-0",
+    "home": "Banjul 18 145",
+    "written": "BANJUL 18 145 · BANJUL",
+    "number": 18145,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4544335,
+    "lng": -16.5764247
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-21627-8",
+    "home": "Banjul 21 627",
+    "written": "BANJUL 21 627 · BANJUL",
+    "number": 21627,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.450689,
+    "lng": -16.5768201
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-21064-4",
+    "home": "Banjul 21 064",
+    "written": "BANJUL 21 064 · BANJUL",
+    "number": 21064,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4525983,
+    "lng": -16.5768921
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-21395-9",
+    "home": "Banjul 21 395",
+    "written": "BANJUL 21 395 · BANJUL",
+    "number": 21395,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.448234,
+    "lng": -16.5717804
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-10354-1",
+    "home": "Banjul 10 354",
+    "written": "BANJUL 10 354 · BANJUL",
+    "number": 10354,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4550381,
+    "lng": -16.5771361
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-16944-0",
+    "home": "Banjul 16 944",
+    "written": "BANJUL 16 944 · BANJUL",
+    "number": 16944,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.451929,
+    "lng": -16.574034
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-21976-6",
+    "home": "Banjul 21 976",
+    "written": "BANJUL 21 976 · BANJUL",
+    "number": 21976,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4491546,
+    "lng": -16.5759282
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-11498-0",
+    "home": "Banjul 11 498",
+    "written": "BANJUL 11 498 · BANJUL",
+    "number": 11498,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4598391,
+    "lng": -16.5798319
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-16406-6",
+    "home": "Banjul 16 406",
+    "written": "BANJUL 16 406 · BANJUL",
+    "number": 16406,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4568003,
+    "lng": -16.5730784
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-22888-3",
+    "home": "Banjul 22 888",
+    "written": "BANJUL 22 888 · BANJUL",
+    "number": 22888,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4571774,
+    "lng": -16.5781406
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-17390-8",
+    "home": "Banjul 17 390",
+    "written": "BANJUL 17 390 · BANJUL",
+    "number": 17390,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4468483,
+    "lng": -16.575647
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-11790-8",
+    "home": "Banjul 11 790",
+    "written": "BANJUL 11 790 · BANJUL",
+    "number": 11790,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4596002,
+    "lng": -16.5776241
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-16541-7",
+    "home": "Banjul 16 541",
+    "written": "BANJUL 16 541 · BANJUL",
+    "number": 16541,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4548329,
+    "lng": -16.5843484
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-13941-0",
+    "home": "Banjul 13 941",
+    "written": "BANJUL 13 941 · BANJUL",
+    "number": 13941,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4448591,
+    "lng": -16.5742254
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-12500-5",
+    "home": "Banjul 12 500",
+    "written": "BANJUL 12 500 · BANJUL",
+    "number": 12500,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4429915,
+    "lng": -16.5767474
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-12837-5",
+    "home": "Banjul 12 837",
+    "written": "BANJUL 12 837 · BANJUL",
+    "number": 12837,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4554616,
+    "lng": -16.5810971
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-18455-0",
+    "home": "Banjul 18 455",
+    "written": "BANJUL 18 455 · BANJUL",
+    "number": 18455,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4594467,
+    "lng": -16.5769814
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-16535-0",
+    "home": "Banjul 16 535",
+    "written": "BANJUL 16 535 · BANJUL",
+    "number": 16535,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4528796,
+    "lng": -16.583858
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-13234-2",
+    "home": "Banjul 13 234",
+    "written": "BANJUL 13 234 · BANJUL",
+    "number": 13234,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4458397,
+    "lng": -16.5718
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-10237-6",
+    "home": "Banjul 10 237",
+    "written": "BANJUL 10 237 · BANJUL",
+    "number": 10237,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.455159,
+    "lng": -16.5791543
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-18819-5",
+    "home": "Banjul 18 819",
+    "written": "BANJUL 18 819 · BANJUL",
+    "number": 18819,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4502357,
+    "lng": -16.574779
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-10694-3",
+    "home": "Banjul 10 694",
+    "written": "BANJUL 10 694 · BANJUL",
+    "number": 10694,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4529965,
+    "lng": -16.5819136
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-20128-7",
+    "home": "Banjul 20 128",
+    "written": "BANJUL 20 128 · BANJUL",
+    "number": 20128,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4625987,
+    "lng": -16.5871478,
+    "of": "GM-BJL-0000-15836-8"
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-15837-6",
+    "home": "Banjul 15 837",
+    "written": "BANJUL 15 837 · BANJUL",
+    "number": 15837,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4626087,
+    "lng": -16.5871478,
+    "of": "GM-BJL-0000-15836-8"
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-15838-4",
+    "home": "Banjul 15 838",
+    "written": "BANJUL 15 838 · BANJUL",
+    "number": 15838,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4626187,
+    "lng": -16.5871478,
+    "of": "GM-BJL-0000-15836-8"
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-23000-3",
+    "home": "Banjul 23 000",
+    "written": "BANJUL 23 000 · BANJUL",
+    "number": 23000,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ],
+     [
+      23000,
+      23099
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4626287,
+    "lng": -16.5871478,
+    "of": "GM-BJL-0000-15836-8"
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-23001-6",
+    "home": "Banjul 23 001",
+    "written": "BANJUL 23 001 · BANJUL",
+    "number": 23001,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ],
+     [
+      23000,
+      23099
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4626387,
+    "lng": -16.5871478,
+    "of": "GM-BJL-0000-15836-8"
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-23002-7",
+    "home": "Banjul 23 002",
+    "written": "BANJUL 23 002 · BANJUL",
+    "number": 23002,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ],
+     [
+      23000,
+      23099
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4626487,
+    "lng": -16.5871478,
+    "of": "GM-BJL-0000-15836-8"
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-23003-4",
+    "home": "Banjul 23 003",
+    "written": "BANJUL 23 003 · BANJUL",
+    "number": 23003,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ],
+     [
+      23000,
+      23099
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4626587,
+    "lng": -16.5871478,
+    "of": "GM-BJL-0000-15836-8"
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-15834-5",
+    "home": "Banjul 15 834",
+    "written": "BANJUL 15 834 · BANJUL",
+    "number": 15834,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ],
+     [
+      23000,
+      23099
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4626687,
+    "lng": -16.5871478,
+    "of": "GM-BJL-0000-15836-8"
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-23004-2",
+    "home": "Banjul 23 004",
+    "written": "BANJUL 23 004 · BANJUL",
+    "number": 23004,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ],
+     [
+      23000,
+      23099
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4550277,
+    "lng": -16.5833241,
+    "of": "GM-BJL-0000-14006-2"
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-14004-3",
+    "home": "Banjul 14 004",
+    "written": "BANJUL 14 004 · BANJUL",
+    "number": 14004,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ],
+     [
+      23000,
+      23099
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4550377,
+    "lng": -16.5833241,
+    "of": "GM-BJL-0000-14006-2"
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-14005-6",
+    "home": "Banjul 14 005",
+    "written": "BANJUL 14 005 · BANJUL",
+    "number": 14005,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ],
+     [
+      23000,
+      23099
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4550477,
+    "lng": -16.5833241,
+    "of": "GM-BJL-0000-14006-2"
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-14007-0",
+    "home": "Banjul 14 007",
+    "written": "BANJUL 14 007 · BANJUL",
+    "number": 14007,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ],
+     [
+      23000,
+      23099
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4550577,
+    "lng": -16.5833241,
+    "of": "GM-BJL-0000-14006-2"
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-14008-1",
+    "home": "Banjul 14 008",
+    "written": "BANJUL 14 008 · BANJUL",
+    "number": 14008,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ],
+     [
+      23000,
+      23099
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4550677,
+    "lng": -16.5833241,
+    "of": "GM-BJL-0000-14006-2"
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-23005-0",
+    "home": "Banjul 23 005",
+    "written": "BANJUL 23 005 · BANJUL",
+    "number": 23005,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ],
+     [
+      23000,
+      23099
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4550777,
+    "lng": -16.5833241,
+    "of": "GM-BJL-0000-14006-2"
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-23006-9",
+    "home": "Banjul 23 006",
+    "written": "BANJUL 23 006 · BANJUL",
+    "number": 23006,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ],
+     [
+      23000,
+      23099
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4550877,
+    "lng": -16.5833241,
+    "of": "GM-BJL-0000-14006-2"
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-23007-5",
+    "home": "Banjul 23 007",
+    "written": "BANJUL 23 007 · BANJUL",
+    "number": 23007,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ],
+     [
+      23000,
+      23099
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4550977,
+    "lng": -16.5833241,
+    "of": "GM-BJL-0000-14006-2"
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-23008-8",
+    "home": "Banjul 23 008",
+    "written": "BANJUL 23 008 · BANJUL",
+    "number": 23008,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ],
+     [
+      23000,
+      23099
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4578911,
+    "lng": -16.5872438,
+    "of": "GM-BJL-0000-14364-6"
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-14362-3",
+    "home": "Banjul 14 362",
+    "written": "BANJUL 14 362 · BANJUL",
+    "number": 14362,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ],
+     [
+      23000,
+      23099
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4579011,
+    "lng": -16.5872438,
+    "of": "GM-BJL-0000-14364-6"
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-14365-1",
+    "home": "Banjul 14 365",
+    "written": "BANJUL 14 365 · BANJUL",
+    "number": 14365,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ],
+     [
+      23000,
+      23099
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4579111,
+    "lng": -16.5872438,
+    "of": "GM-BJL-0000-14364-6"
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-23009-1",
+    "home": "Banjul 23 009",
+    "written": "BANJUL 23 009 · BANJUL",
+    "number": 23009,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ],
+     [
+      23000,
+      23099
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4579211,
+    "lng": -16.5872438,
+    "of": "GM-BJL-0000-14364-6"
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-23010-9",
+    "home": "Banjul 23 010",
+    "written": "BANJUL 23 010 · BANJUL",
+    "number": 23010,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ],
+     [
+      23000,
+      23099
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4579311,
+    "lng": -16.5872438,
+    "of": "GM-BJL-0000-14364-6"
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-14366-7",
+    "home": "Banjul 14 366",
+    "written": "BANJUL 14 366 · BANJUL",
+    "number": 14366,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ],
+     [
+      23000,
+      23099
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4579411,
+    "lng": -16.5872438,
+    "of": "GM-BJL-0000-14364-6"
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-23011-4",
+    "home": "Banjul 23 011",
+    "written": "BANJUL 23 011 · BANJUL",
+    "number": 23011,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ],
+     [
+      23000,
+      23099
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4579511,
+    "lng": -16.5872438,
+    "of": "GM-BJL-0000-14364-6"
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-23012-3",
+    "home": "Banjul 23 012",
+    "written": "BANJUL 23 012 · BANJUL",
+    "number": 23012,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ],
+     [
+      23000,
+      23099
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4579611,
+    "lng": -16.5872438,
+    "of": "GM-BJL-0000-14364-6"
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-23013-8",
+    "home": "Banjul 23 013",
+    "written": "BANJUL 23 013 · BANJUL",
+    "number": 23013,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ],
+     [
+      23000,
+      23099
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4524584,
+    "lng": -16.5812202,
+    "of": "GM-BJL-0000-20163-6"
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-20164-8",
+    "home": "Banjul 20 164",
+    "written": "BANJUL 20 164 · BANJUL",
+    "number": 20164,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ],
+     [
+      23000,
+      23099
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4524684,
+    "lng": -16.5812202,
+    "of": "GM-BJL-0000-20163-6"
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-20165-7",
+    "home": "Banjul 20 165",
+    "written": "BANJUL 20 165 · BANJUL",
+    "number": 20165,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ],
+     [
+      23000,
+      23099
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4524784,
+    "lng": -16.5812202,
+    "of": "GM-BJL-0000-20163-6"
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-23014-6",
+    "home": "Banjul 23 014",
+    "written": "BANJUL 23 014 · BANJUL",
+    "number": 23014,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ],
+     [
+      23000,
+      23099
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4524884,
+    "lng": -16.5812202,
+    "of": "GM-BJL-0000-20163-6"
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-23015-1",
+    "home": "Banjul 23 015",
+    "written": "BANJUL 23 015 · BANJUL",
+    "number": 23015,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ],
+     [
+      23000,
+      23099
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4524984,
+    "lng": -16.5812202,
+    "of": "GM-BJL-0000-20163-6"
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-23016-7",
+    "home": "Banjul 23 016",
+    "written": "BANJUL 23 016 · BANJUL",
+    "number": 23016,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ],
+     [
+      23000,
+      23099
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4525084,
+    "lng": -16.5812202,
+    "of": "GM-BJL-0000-20163-6"
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-23017-2",
+    "home": "Banjul 23 017",
+    "written": "BANJUL 23 017 · BANJUL",
+    "number": 23017,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ],
+     [
+      23000,
+      23099
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4525184,
+    "lng": -16.5812202,
+    "of": "GM-BJL-0000-20163-6"
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-23018-0",
+    "home": "Banjul 23 018",
+    "written": "BANJUL 23 018 · BANJUL",
+    "number": 23018,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ],
+     [
+      23000,
+      23099
+     ]
+    ]
+   }
+  },
+  {
+   "step": {
+    "lat": 13.4525284,
+    "lng": -16.5812202,
+    "of": "GM-BJL-0000-20163-6"
+   },
+   "expect": {
+    "machine": "GM-BJL-0000-23019-5",
+    "home": "Banjul 23 019",
+    "written": "BANJUL 23 019 · BANJUL",
+    "number": 23019,
+    "lieu": "BJL-0000",
+    "blocks": [
+     [
+      10000,
+      22999
+     ],
+     [
+      23000,
+      23099
+     ]
+    ]
+   }
+  }
+ ]
+}

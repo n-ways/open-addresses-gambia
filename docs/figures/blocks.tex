@@ -1,0 +1,42 @@
+% The national ranges of two repeated names, cut into one block per place in (zone, index) order.
+% Data: blocks-brikama.dat, blocks-madina.dat (lo, hi, zone, compounds at first issue).
+\documentclass[border=2mm]{standalone}
+\usepackage{fontspec}\setmainfont{LibertinusSans}[Extension=.otf,UprightFont=*-Regular,BoldFont=*-Bold]
+\usepackage{pgfplots}\pgfplotsset{compat=1.18, /pgf/number format/assume math mode=true}
+\definecolor{ink}{HTML}{0C1C8C}\definecolor{flagred}{HTML}{CE1126}\definecolor{flaggreen}{HTML}{3A7728}
+\usepackage{pgfplotstable}
+% \tr{English}{French}: the figure's language; <name>-fr.tex sets \figfr and inputs this file.
+\ifdefined\figfr\newcommand{\tr}[2]{#2}\pgfkeys{/pgf/number format/.cd, use comma, 1000 sep={\,}}\else\newcommand{\tr}[2]{#1}\fi
+\begin{document}
+\begin{tikzpicture}[x=1cm, y=1cm]
+\pgfmathsetmacro{\sx}{1/600}
+\colorlet{zCRR}{ink!70}\colorlet{zLRR}{flaggreen!80}\colorlet{zNBR}{orange!80!black}\colorlet{zURR}{flagred!80}\colorlet{zWCR}{ink!35}
+\newcommand{\range}[3]{% #1 table, #2 row y, #3 label
+  \pgfplotstableread{#1}\tbl
+  \pgfplotstablegetrowsof{\tbl}\pgfmathtruncatemacro{\last}{\pgfplotsretval-1}
+  \node[anchor=east, font=\small] at (-1, #2+0.3) {#3};
+  \draw[black!40, fill=black!4] (0, #2) rectangle (9000*\sx, #2+0.6);
+  \foreach \i in {0,...,\last}{
+    \pgfplotstablegetelem{\i}{lo}\of\tbl \pgfmathsetmacro{\lo}{(\pgfplotsretval-1000)*\sx}
+    \pgfplotstablegetelem{\i}{hi}\of\tbl \pgfmathsetmacro{\hi}{(\pgfplotsretval+1-1000)*\sx}
+    \pgfplotstablegetelem{\i}{zone}\of\tbl \edef\zn{\pgfplotsretval}
+    \pgfplotstablegetelem{\i}{compounds}\of\tbl \edef\nc{\pgfplotsretval}
+    \fill[z\zn, draw=white, line width=0.4pt] (\lo, #2) rectangle (\hi, #2+0.6);
+    \pgfmathparse{\hi-\lo > 0.7 ? 1 : 0}
+    \ifnum\pgfmathresult=1 \node[font=\scriptsize, white, align=center, inner sep=0] at ({(\lo+\hi)/2}, #2+0.3) {\zn\\\nc};\fi
+  }
+}
+\range{blocks-brikama.dat}{1.2}{\emph{brikama} (5 \tr{places}{lieux})}
+\range{blocks-madina.dat}{0}{\emph{madina} (15 \tr{places}{lieux})}
+\draw[flagred, dashed, thick] (8100*\sx, -0.25) -- (8100*\sx, 2.0) node[above, font=\scriptsize] {\tr{90\,\% limit}{limite de 90\,\%}};
+\foreach \v in {1000,2000,...,9000}{\pgfmathsetmacro{\p}{(\v-1000)*\sx} \draw (\p, -0.12) -- (\p, -0.02); \node[below, font=\scriptsize] at (\p, -0.12) {\v};}
+\node[font=\scriptsize, black!60] at (8550*\sx, 0.9) {\tr{free}{libre}};
+\matrix[anchor=north west, column sep=6pt, font=\scriptsize] at (0, -0.55) {
+  \fill[zCRR] (0,0) rectangle (0.3,0.12); \node[right] at (0.3,0.06) {Central River}; &
+  \fill[zLRR] (0,0) rectangle (0.3,0.12); \node[right] at (0.3,0.06) {Lower River}; &
+  \fill[zNBR] (0,0) rectangle (0.3,0.12); \node[right] at (0.3,0.06) {North Bank}; &
+  \fill[zURR] (0,0) rectangle (0.3,0.12); \node[right] at (0.3,0.06) {Upper River}; &
+  \fill[zWCR] (0,0) rectangle (0.3,0.12); \node[right] at (0.3,0.06) {West Coast}; \\
+};
+\end{tikzpicture}
+\end{document}

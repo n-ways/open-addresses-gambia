@@ -1,0 +1,44 @@
+{
+  "byZone": {
+    "BJL": 4320,
+    "CRR": 54222,
+    "KMC": 45338,
+    "LRR": 19377,
+    "NBR": 53630,
+    "URR": 48103,
+    "WCR": 246041
+  },
+  "country": "GM",
+  "credit": "N-Ways Addressing for The Gambia, © N-WAYS LIMITED (nways.ng)",
+  "engine": "internal/addressing/gm (SPEC v1.0)",
+  "exported": "2026-10-20T15:53:35Z",
+  "homeCodes": 471031,
+  "licence": "ODbL 1.0 (LICENSE-DATA)",
+  "sha256": {
+    "BJL.csv": "702f15f6f98864d2dc061a09849d827b4f3d09d71d3695cbd3b32ad052670214",
+    "CRR.csv": "1b909d807dbd69188ba980987f17b84ea4e7baee87791180c9a7aaa4eba8e755",
+    "KMC.csv": "2781a3de9d0a35f12f1651a21ef455cf25c3a408e7aba7c43a06c0a49e30d8e9",
+    "LRR.csv": "2d8b1be27333d228fed5cd745df9867c030c29be7d9cea3f641f3596981c505a",
+    "NBR.csv": "c46336cfd27e0c4a2755f67bd592973ebea46a7b25b3987c6faa7ef43001ab10",
+    "URR.csv": "8bad9e54b39871b662169dbce981a00af3a75aae9b6e0039a60a9fd0b23aafc7",
+    "WCR.csv": "bc2e12cd43be9c907467fee5eaac0ea21c0b72bd3105ad307c17471950731b3f",
+    "lieux.csv": "8767c5ffec2816f8de28d93e34e092c1b18e6391e60e0773aeefb3c2c76280cb",
+    "structures/BJL.csv": "f4cfd40ca7c615c0069ba6b8180c9433d7b39393604193da8c70dcd9e9f4f3d1",
+    "structures/CRR.csv": "c053b8b90c2bb4db609726a85fcdc211cf12add17d8e22b83c12eb027327d5f8",
+    "structures/KMC.csv": "1117f030b0e8ecefb99fb48e64fa6406f5d69e286eafc38d10e529ab42fa9542",
+    "structures/LRR.csv": "ee8ce19a3886d9e0309b82a2441d24ee1b8828411af6ff6bba907e57e00ed100",
+    "structures/NBR.csv": "4e79f1ebda17599152098e202896eeaf39f6aa435916c32c8ad2626760f7c816",
+    "structures/URR.csv": "44cb45e6b320ebd1e8b9090053ab9d321ef8b4d479e5bdcde91a77499ee79d09",
+    "structures/WCR.csv": "88ff96d84b0826929c6723f8e8fd4efec4aa4a82f61a34ce87d9aa6db812ea0c"
+  },
+  "structures": 672836,
+  "structuresByZone": {
+    "BJL": 5661,
+    "CRR": 100269,
+    "KMC": 55544,
+    "LRR": 28665,
+    "NBR": 84169,
+    "URR": 79041,
+    "WCR": 319487
+  }
+}

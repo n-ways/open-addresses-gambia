@@ -1,0 +1,20 @@
+% Bakau (KMC-0001): every compound at its centre, coloured by its number; the grey line joins the numbers in order.
+% Data: bakau.dat, metres east and north of the place's south-west compound.
+\documentclass[border=2mm]{standalone}
+\usepackage{fontspec}\setmainfont{LibertinusSans}[Extension=.otf,UprightFont=*-Regular,BoldFont=*-Bold]
+\usepackage{pgfplots}\pgfplotsset{compat=1.18, /pgf/number format/assume math mode=true}
+\definecolor{ink}{HTML}{0C1C8C}\definecolor{flagred}{HTML}{CE1126}\definecolor{flaggreen}{HTML}{3A7728}
+% \tr{English}{French}: the figure's language; <name>-fr.tex sets \figfr and inputs this file.
+\ifdefined\figfr\newcommand{\tr}[2]{#2}\pgfkeys{/pgf/number format/.cd, use comma, 1000 sep={\,}}\else\newcommand{\tr}[2]{#1}\fi
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[width=9.5cm, axis equal image, xlabel={\tr{east (m)}{est (m)}}, ylabel={\tr{north (m)}{nord (m)}}, tick label style={font=\scriptsize},
+  label style={font=\small}, colormap={hil}{rgb255(0cm)=(206,17,38); rgb255(1cm)=(240,170,60); rgb255(2cm)=(58,119,40); rgb255(3cm)=(12,28,140)},
+  colorbar, colorbar style={ylabel={\tr{number}{numéro}}, ylabel style={font=\small}, yticklabel style={font=\scriptsize}, width=0.25cm,
+    ytick={1000,2000,3000,4000,5000}}, point meta min=1000, point meta max=5399]
+\addplot[black!35, line width=0.25pt] table[x=x, y=y] {bakau.dat};
+\addplot[scatter, only marks, mark=*, mark size=1.1pt, scatter/use mapped color={draw=mapped color, fill=mapped color},
+  point meta=\thisrow{number}] table[x=x, y=y] {bakau.dat};
+\end{axis}
+\end{tikzpicture}
+\end{document}

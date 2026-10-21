@@ -1,0 +1,16 @@
+# N-Ways Addressing for The Gambia: what you need to install.
+#
+# Python 3.9 or later. The reference engine and its tests
+# (engine/reference/gm_engine.py, test_gm.py), the registry server (server/)
+# and the tools in tools/ use only Python's standard library: there is no
+# Python package to install, so `pip install -r requirements.txt` installs
+# nothing and that is expected. Docker is optional (docker compose up).
+#
+# Only to rebuild the data from scratch (tools/issue_registry.py,
+# tools/build_lieux.py, tools/build_zones.py), not to run the engine or use
+# the home codes:
+#   - the DuckDB command-line tool, 1.1 or later, with its spatial extension,
+#     on PATH as `duckdb` (https://duckdb.org/docs/installation; macOS:
+#     brew install duckdb); the tools set its memory limit to 3 GB;
+#   - read access to an N-Ways database (NWAYS_DB) and data folder (--root);
+#     outside N-Ways, use the published data in registry/ and model/ instead.

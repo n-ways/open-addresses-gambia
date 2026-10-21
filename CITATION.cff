@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite the paper as below."
+title: "N-Ways Addressing for The Gambia"
+abstract: "The registry, reference engine, registry server and research paper of N-Ways home codes for The Gambia: a short, speakable code for every compound, beside the government's Plus Code."
+authors:
+  - name: "The N-Ways Addressing Group"
+    email: hello@nways.ng
+    website: "https://nways.ng"
+repository-code: "https://github.com/n-ways/open-addresses-gambia"
+url: "https://github.com/n-ways/open-addresses-gambia"
+license: "CC-BY-4.0"
+date-released: "2026-10-20"
+keywords:
+  - addressing
+  - The Gambia
+  - Plus Codes
+  - geocoding
+  - postal addresses
+  - check digits
+preferred-citation:
+  type: report
+  title: "A spoken address for every compound: a home-code model beside the national Plus Code of The Gambia"
+  authors:
+    - name: "The N-Ways Addressing Group"
+  institution:
+    name: "N-WAYS LIMITED"
+  year: 2026
+  month: 10
+  url: "https://github.com/n-ways/open-addresses-gambia/blob/main/docs/paper.md"
+  license: "CC-BY-4.0"

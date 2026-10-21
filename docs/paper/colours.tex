@@ -1,0 +1,16 @@
+% The Gambia: red, white, blue, white and green, the national flag's stripes in
+% order and in the flag's proportions (6 : 1 : 4 : 1 : 6).
+\definecolor{flagA}{HTML}{CE1126}
+\definecolor{flagB}{HTML}{FFFFFF}
+\definecolor{flagC}{HTML}{0C1C8C}
+\definecolor{flagD}{HTML}{FFFFFF}
+\definecolor{flagE}{HTML}{3A7728}
+\definecolor{paperink}{HTML}{0C1C8C}
+\newcommand{\flagband}{\begin{tikzpicture}[remember picture,overlay]
+  \fill[flagA] (0,0) rectangle (\paperwidth,-2.2mm);
+  \fill[flagB] (0,-2.2mm) rectangle (\paperwidth,-2.6mm);
+  \fill[flagC] (0,-2.6mm) rectangle (\paperwidth,-4.0mm);
+  \fill[flagD] (0,-4.0mm) rectangle (\paperwidth,-4.4mm);
+  \fill[flagE] (0,-4.4mm) rectangle (\paperwidth,-6.6mm);
+\end{tikzpicture}}
+\newcommand{\papershort}{N-Ways Addressing for The Gambia}

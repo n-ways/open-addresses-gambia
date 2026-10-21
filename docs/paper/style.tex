@@ -1,0 +1,51 @@
+% Typesetting of the paper: fonts, the country's colours, title page, running heads.
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\setmainfont{LibertinusSerif}[Extension=.otf,UprightFont=*-Regular,BoldFont=*-Semibold,ItalicFont=*-Italic,BoldItalicFont=*-SemiboldItalic]
+\setsansfont{LibertinusSans}[Extension=.otf,UprightFont=*-Regular,BoldFont=*-Bold,ItalicFont=*-Italic]
+\setmathfont{LibertinusMath-Regular.otf}
+\setmonofont{inconsolata.otf}[Scale=0.92]
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{eso-pic}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{calc}
+\usepackage{url}
+\usepackage{caption}
+\usepackage{etoolbox}
+\setlength{\emergencystretch}{3em}
+\captionsetup{font=small,labelfont={sf,bf,color=paperink},labelsep=period}
+\captionsetup[table]{position=top,skip=4pt}
+\setlength{\parindent}{1.2em}
+\setlength{\parskip}{0pt}
+\linespread{1.08}
+\titleformat{\section}{\sffamily\Large\bfseries\color{paperink}}{\thesection}{0.8em}{}
+\titleformat{\subsection}{\sffamily\large\bfseries\color{paperink}}{\thesubsection}{0.8em}{}
+\titleformat{\subsubsection}{\sffamily\normalsize\bfseries}{\thesubsubsection}{0.8em}{}
+\titlespacing*{\section}{0pt}{2.2ex plus 1ex}{1ex}
+% a section heading never ends a page on its own (the float that follows it may move on)
+\usepackage{needspace}
+\preto\section{\needspace{4\baselineskip}}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.3pt}
+\fancyhead[L]{\sffamily\footnotesize\color{paperink}\papershort}
+\fancyhead[R]{\sffamily\footnotesize\leftmark}
+\fancyfoot[C]{\sffamily\footnotesize\thepage}
+\renewcommand{\sectionmark}[1]{\markboth{\thesection\quad #1}{}}
+\fancypagestyle{plain}{\fancyhf{}\renewcommand{\headrulewidth}{0pt}\fancyfoot[C]{\sffamily\footnotesize\thepage}}
+% the flag band across the top of every page
+\AddToShipoutPictureBG{\AtPageUpperLeft{\flagband}}
+\AtBeginDocument{\hypersetup{colorlinks=true,linkcolor=paperink,citecolor=paperink,urlcolor=paperink}}
+% French: "Tableau" in captions, set in the same type as the English labels
+\makeatletter
+\AtEndPreamble{\@ifpackageloaded{babel}{%
+  \ifdefined\frenchsetup\frenchsetup{SmallCapsFigTabCaptions=false}\fi
+  \ifdefined\captionsfrench\addto\captionsfrench{\def\tablename{Tableau}}\fi}{}}
+\makeatother

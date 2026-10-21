@@ -1,0 +1,20 @@
+{
+  "byZone": {
+    "BJL": 4320
+  },
+  "country": "GM",
+  "credit": "N-Ways Addressing for The Gambia, © N-WAYS LIMITED (nways.ng)",
+  "engine": "internal/addressing/gm (SPEC v1.0)",
+  "exported": "2026-10-20T15:53:35Z",
+  "homeCodes": 4320,
+  "licence": "ODbL 1.0 (LICENSE-DATA)",
+  "sha256": {
+    "BJL.csv": "702f15f6f98864d2dc061a09849d827b4f3d09d71d3695cbd3b32ad052670214",
+    "lieux.csv": "8767c5ffec2816f8de28d93e34e092c1b18e6391e60e0773aeefb3c2c76280cb",
+    "structures/BJL.csv": "f4cfd40ca7c615c0069ba6b8180c9433d7b39393604193da8c70dcd9e9f4f3d1"
+  },
+  "structures": 5661,
+  "structuresByZone": {
+    "BJL": 5661
+  }
+}

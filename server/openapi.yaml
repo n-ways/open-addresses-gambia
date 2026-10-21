@@ -1,0 +1,3254 @@
+# OpenAPI contract of the registry server (server/). Examples are real responses.
+openapi: "3.1.0"
+info:
+  title: "N-Ways Addressing for The Gambia: registry API"
+  version: "1"
+  summary: "The published home codes of The Gambia, their look-ups and, on a designated deployment, issuing."
+  description: "Served by `python3 -m server serve` (server/README.md). Every example is a real response from a server holding the complete published registry. Errors are {\"error\": {\"code\", \"message\"}} with the matching HTTP status."
+  contact:
+    name: N-WAYS LIMITED
+    url: "https://nways.ng"
+    email: "hello@nways.ng"
+  license:
+    name: Apache-2.0
+    identifier: Apache-2.0
+servers:
+  - url: "http://localhost:8080"
+    description: A local deployment (docker compose up)
+paths:
+  /v1/health:
+    get:
+      summary: Health and size of the registry served
+      operationId: health
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Health"
+              examples:
+                health:
+                  value:
+                    status: ok
+                    country: GM
+                    codes: 471031
+                    registryExported: "2026-10-20T15:53:35Z"
+                    issuing: false
+  /v1/info:
+    get:
+      summary: "Country, zones, counts, licences and credit"
+      operationId: info
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Info"
+              examples:
+                info:
+                  value:
+                    country: GM
+                    name: The Gambia
+                    zones:
+                      - key: BJL
+                        index: 0
+                        name: Banjul
+                        iso: GM-B
+                        codes: 4320
+                        areas: 1
+                      - key: CRR
+                        index: 1
+                        name: Central River
+                        iso: GM-M
+                        codes: 54222
+                        areas: 803
+                      - key: KMC
+                        index: 2
+                        name: Kanifing
+                        iso: null
+                        codes: 45338
+                        areas: 35
+                      - key: LRR
+                        index: 3
+                        name: Lower River
+                        iso: GM-L
+                        codes: 19377
+                        areas: 181
+                      - key: NBR
+                        index: 4
+                        name: North Bank
+                        iso: GM-N
+                        codes: 53630
+                        areas: 431
+                      - key: URR
+                        index: 5
+                        name: Upper River
+                        iso: GM-U
+                        codes: 48103
+                        areas: 478
+                      - key: WCR
+                        index: 6
+                        name: West Coast
+                        iso: GM-W
+                        codes: 246041
+                        areas: 418
+                    counts:
+                      codes: 471031
+                      byStatus:
+                        provisional: 471031
+                      byIssue:
+                        bulk: 471030
+                        on-demand: 1
+                      areas: 2347
+                      structures: 672836
+                    registry:
+                      exported: "2026-10-20T15:53:35Z"
+                      imported: "2026-10-21T13:35:04Z"
+                      engine: internal/addressing/gm (SPEC v1.0)
+                    spec: engine/SPEC.md 1.0
+                    licences:
+                      data: ODbL 1.0
+                      code: Apache 2.0
+                      documents: CC BY 4.0
+                    credit: "N-Ways Addressing for The Gambia, © N-WAYS LIMITED (nways.ng)"
+                    source: "https://github.com/n-ways/open-addresses-gambia"
+                    issuing: false
+                    example:
+                      home: Bakau 2389
+                      machine: GM-KMC-0001-2389-6
+  /v1/codes:
+    post:
+      summary: Issue a code for a new compound or another door (designated issuer only)
+      operationId: issue
+      security:
+        - bearer: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/IssueRequest"
+            examples:
+              new:
+                value:
+                  lat: 13.3495584
+                  lng: -16.6246945
+              door:
+                value:
+                  lat: 13.47842
+                  lng: -16.67871
+                  of: GM-KMC-0001-2389-6
+              outline:
+                value:
+                  lat: 13.3247953
+                  lng: -16.5969105
+                  outline:
+                    - - -16.5969505
+                      - 13.3247553
+                    - - -16.5968705
+                      - 13.3247553
+                    - - -16.5968705
+                      - 13.3248353
+                    - - -16.5969505
+                      - 13.3248353
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Card"
+              examples:
+                issue:
+                  value:
+                    machine: GM-WCR-0243-11946-0
+                    home: Karewan 11 946
+                    written: KAREWAN 11 946 · WEST COAST
+                    spoken: "Karewan, eleven, nine hundred and forty-six"
+                    status: provisional
+                    issued: on-demand
+                    issuedAt: "2026-10-21T13:53:22Z"
+                    officialAddress: "89XG+R4F Karewan"
+                    coverage: official
+                    area:
+                      id: WCR-0243
+                      plateName: Karewan
+                      officialName: Karewan
+                      nameProvisional: false
+                      nearTown: null
+                    zone:
+                      key: WCR
+                      name: West Coast
+                      iso: GM-W
+                    number: 11946
+                    check: 0
+                    entrance:
+                      lat: 13.3495584
+                      lng: -16.6246945
+                      kind: centre
+                    plusCode: "7C5589XG+R4F"
+                    spot:
+                      code: "7C5589XG+R4F"
+                      short: "89XG+R4F"
+                      withTown: "89XG+R4F Karewan"
+                    centre:
+                      lat: 13.3495584
+                      lng: -16.6246945
+                    compound:
+                      class: null
+                      use: unknown
+                      kind: un_batiment
+                      structures: 0
+                      floorAreaM2: 0.0
+                      rule: null
+                      enclosed: false
+                    postcode: null
+                    structures: []
+                    registry:
+                      machine: GM-WCR-0243-11946-0
+                      home: Karewan 11 946
+                      written: KAREWAN 11 946 · WEST COAST
+                      lieu: WCR-0243
+                      official_name: Karewan
+                      number: "11946"
+                      check: "0"
+                      status: provisional
+                      issued: on-demand
+                      issued_at: "2026-10-21T13:53:22Z"
+                      entrance_lat: "13.3495584"
+                      entrance_lng: "-16.6246945"
+                      entrance_kind: centre
+                      plus_code: "7C5589XG+R4F"
+                      class: ""
+                      use: unknown
+                      kind: un_batiment
+                      structures: "0"
+                      floor_area_m2: "0.0"
+                      postcode: ""
+                      coverage: ""
+                      official_address: ""
+                      anchor_lat: "13.3495584"
+                      anchor_lng: "-16.6246945"
+                      rule: ""
+                      enclosed: "false"
+                    credit: "N-Ways Addressing for The Gambia, © N-WAYS LIMITED (nways.ng)"
+                issue-door:
+                  value:
+                    machine: GM-KMC-0001-2390-6
+                    home: Bakau 2390
+                    written: BAKAU 2390 · KANIFING
+                    spoken: "Bakau, twenty-three, ninety"
+                    status: provisional
+                    issued: on-demand
+                    issuedAt: "2026-10-21T13:53:22Z"
+                    officialAddress: F8HC+9G7 Bakau
+                    coverage: official
+                    area:
+                      id: KMC-0001
+                      plateName: Bakau
+                      officialName: Bakau
+                      nameProvisional: false
+                      nearTown: null
+                    zone:
+                      key: KMC
+                      name: Kanifing
+                      iso: null
+                    number: 2390
+                    check: 6
+                    entrance:
+                      lat: 13.47842
+                      lng: -16.67871
+                      kind: door
+                    plusCode: "7C55F8HC+9G7"
+                    spot:
+                      code: "7C55F8HC+9G7"
+                      short: F8HC+9G7
+                      withTown: F8HC+9G7 Bakau
+                    centre:
+                      lat: 13.47842
+                      lng: -16.67871
+                    compound:
+                      class: null
+                      use: unknown
+                      kind: door
+                      structures: 0
+                      floorAreaM2: 0.0
+                      rule: null
+                      enclosed: false
+                    postcode: null
+                    structures: []
+                    registry:
+                      machine: GM-KMC-0001-2390-6
+                      home: Bakau 2390
+                      written: BAKAU 2390 · KANIFING
+                      lieu: KMC-0001
+                      official_name: Bakau
+                      number: "2390"
+                      check: "6"
+                      status: provisional
+                      issued: on-demand
+                      issued_at: "2026-10-21T13:53:22Z"
+                      entrance_lat: "13.4784200"
+                      entrance_lng: "-16.6787100"
+                      entrance_kind: door
+                      plus_code: "7C55F8HC+9G7"
+                      class: ""
+                      use: unknown
+                      kind: door
+                      structures: "0"
+                      floor_area_m2: "0.0"
+                      postcode: ""
+                      coverage: ""
+                      official_address: ""
+                      anchor_lat: "13.4784200"
+                      anchor_lng: "-16.6787100"
+                      rule: ""
+                      enclosed: "false"
+                    credit: "N-Ways Addressing for The Gambia, © N-WAYS LIMITED (nways.ng)"
+                issue-outline:
+                  value:
+                    machine: GM-WCR-0266-2312-5
+                    home: Kubuni 2312
+                    written: KUBUNI 2312 · WEST COAST
+                    spoken: "Kubuni, twenty-three, twelve"
+                    status: provisional
+                    issued: on-demand
+                    issuedAt: "2026-10-21T13:53:22Z"
+                    officialAddress: "8CF3+W68 Kubuni"
+                    coverage: official
+                    area:
+                      id: WCR-0266
+                      plateName: Kubuni
+                      officialName: Kubuni
+                      nameProvisional: false
+                      nearTown: null
+                    zone:
+                      key: WCR
+                      name: West Coast
+                      iso: GM-W
+                    number: 2312
+                    check: 5
+                    entrance:
+                      lat: 13.3247953
+                      lng: -16.5969105
+                      kind: centre
+                    plusCode: "7C558CF3+W68"
+                    spot:
+                      code: "7C558CF3+W68"
+                      short: "8CF3+W68"
+                      withTown: "8CF3+W68 Kubuni"
+                    centre:
+                      lat: 13.3247953
+                      lng: -16.5969105
+                    compound:
+                      class: res.maison
+                      use: residential
+                      kind: un_batiment
+                      structures: 1
+                      floorAreaM2: 76.7
+                      rule: null
+                      enclosed: false
+                    postcode: null
+                    structures:
+                      - index: 1
+                        id: "people:GM-WCR-0266-2312-5"
+                        use: res.maison
+                        confidence: 0.45
+                        source: "shape:house-size"
+                        status: existing
+                        footprintM2: 76.7
+                        perimeterM: 35.1
+                        floors: 1
+                        floorAreaM2: 76.7
+                        data: people
+                    registry:
+                      machine: GM-WCR-0266-2312-5
+                      home: Kubuni 2312
+                      written: KUBUNI 2312 · WEST COAST
+                      lieu: WCR-0266
+                      official_name: Kubuni
+                      number: "2312"
+                      check: "5"
+                      status: provisional
+                      issued: on-demand
+                      issued_at: "2026-10-21T13:53:22Z"
+                      entrance_lat: "13.3247953"
+                      entrance_lng: "-16.5969105"
+                      entrance_kind: centre
+                      plus_code: "7C558CF3+W68"
+                      class: res.maison
+                      use: residential
+                      kind: un_batiment
+                      structures: "1"
+                      floor_area_m2: "76.7"
+                      postcode: ""
+                      coverage: ""
+                      official_address: ""
+                      anchor_lat: "13.3247953"
+                      anchor_lng: "-16.5969105"
+                      rule: ""
+                      enclosed: "false"
+                    credit: "N-Ways Addressing for The Gambia, © N-WAYS LIMITED (nways.ng)"
+        "401":
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                issue-no-key:
+                  value:
+                    error:
+                      code: unauthorized
+                      message: "A valid bearer key is required (Authorization: Bearer <key>)."
+        "403":
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                issue-read-only:
+                  value:
+                    error:
+                      code: read_only
+                      message: "This deployment is read-only: it serves the published registry and does not issue codes."
+        "409":
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                issue-exists:
+                  value:
+                    error:
+                      code: exists
+                      message: "This building already has its code: Bakau 2389."
+                      existing:
+                        machine: GM-KMC-0001-2389-6
+                        home: Bakau 2389
+                        written: BAKAU 2389 · KANIFING
+                        spoken: "Bakau, twenty-three, eighty-nine"
+                        status: provisional
+                        issued: bulk
+                        issuedAt: "2026-10-20T05:00:52Z"
+                        officialAddress: F8HC+9G6 Bakau
+                        coverage: official
+                        area:
+                          id: KMC-0001
+                          plateName: Bakau
+                          officialName: Bakau
+                          nameProvisional: false
+                          nearTown: null
+                        zone:
+                          key: KMC
+                          name: Kanifing
+                          iso: null
+                        number: 2389
+                        check: 6
+                        entrance:
+                          lat: 13.47841
+                          lng: -16.6787355
+                          kind: centre
+                        plusCode: "7C55F8HC+9G6"
+                        spot:
+                          code: "7C55F8HC+9G6"
+                          short: F8HC+9G6
+                          withTown: F8HC+9G6 Bakau
+                        centre:
+                          lat: 13.4784103
+                          lng: -16.6787356
+                        compound:
+                          class: res.maison
+                          use: residential
+                          kind: un_batiment
+                          structures: 1
+                          floorAreaM2: 113.1
+                          rule: single
+                          enclosed: false
+                        postcode: null
+                        structures:
+                          - index: 1
+                            id: "osm:way/933561063"
+                            use: res.maison
+                            confidence: 0.85
+                            source: "osm:building=residential"
+                            status: existing
+                            footprintM2: 113.1
+                            perimeterM: 43
+                            floors: 1
+                            floorAreaM2: 113.1
+                            data: osm
+                        registry:
+                          machine: GM-KMC-0001-2389-6
+                          home: Bakau 2389
+                          written: BAKAU 2389 · KANIFING
+                          lieu: KMC-0001
+                          official_name: Bakau
+                          number: "2389"
+                          check: "6"
+                          status: provisional
+                          issued: bulk
+                          issued_at: "2026-10-20T05:00:52Z"
+                          entrance_lat: "13.4784100"
+                          entrance_lng: "-16.6787355"
+                          entrance_kind: centre
+                          plus_code: "7C55F8HC+9G6"
+                          class: res.maison
+                          use: residential
+                          kind: un_batiment
+                          structures: "1"
+                          floor_area_m2: "113.1"
+                          postcode: ""
+                          coverage: ""
+                          official_address: ""
+                          anchor_lat: "13.4784103"
+                          anchor_lng: "-16.6787356"
+                          rule: single
+                          enclosed: "false"
+                        credit: "N-Ways Addressing for The Gambia, © N-WAYS LIMITED (nways.ng)"
+        "422":
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                issue-outside:
+                  value:
+                    error:
+                      code: outside
+                      message: "That point is outside The Gambia, so it cannot have a code."
+                issue-bad-outline:
+                  value:
+                    error:
+                      code: bad_outline
+                      message: "That outline is 0 m², but a compound's building is between 12 m² and 2 ha."
+                issue-far-door:
+                  value:
+                    error:
+                      code: far
+                      message: "That door is more than 80 m from Bakau 2389's entrance."
+                issue-door-bad-check:
+                  value:
+                    error:
+                      code: bad_check
+                      message: "GM-KMC-0001-2389-7: the check digit does not match. A digit is wrong or two are swapped; the code is refused rather than guessed."
+        "404":
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                issue-door-of-unknown:
+                  value:
+                    error:
+                      code: unknown
+                      message: "There is no code GM-KMC-0001-2390-6 to add a door to."
+  "/v1/codes/{machine}":
+    get:
+      summary: The full card of a code
+      operationId: getCode
+      parameters:
+        - name: machine
+          in: path
+          required: true
+          description: "Machine form, e.g. GM-KMC-0001-2389-6"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Card"
+              examples:
+                code:
+                  value:
+                    machine: GM-KMC-0001-2389-6
+                    home: Bakau 2389
+                    written: BAKAU 2389 · KANIFING
+                    spoken: "Bakau, twenty-three, eighty-nine"
+                    status: provisional
+                    issued: bulk
+                    issuedAt: "2026-10-20T05:00:52Z"
+                    officialAddress: F8HC+9G6 Bakau
+                    coverage: official
+                    area:
+                      id: KMC-0001
+                      plateName: Bakau
+                      officialName: Bakau
+                      nameProvisional: false
+                      nearTown: null
+                    zone:
+                      key: KMC
+                      name: Kanifing
+                      iso: null
+                    number: 2389
+                    check: 6
+                    entrance:
+                      lat: 13.47841
+                      lng: -16.6787355
+                      kind: centre
+                    plusCode: "7C55F8HC+9G6"
+                    spot:
+                      code: "7C55F8HC+9G6"
+                      short: F8HC+9G6
+                      withTown: F8HC+9G6 Bakau
+                    centre:
+                      lat: 13.4784103
+                      lng: -16.6787356
+                    compound:
+                      class: res.maison
+                      use: residential
+                      kind: un_batiment
+                      structures: 1
+                      floorAreaM2: 113.1
+                      rule: single
+                      enclosed: false
+                    postcode: null
+                    structures:
+                      - index: 1
+                        id: "osm:way/933561063"
+                        use: res.maison
+                        confidence: 0.85
+                        source: "osm:building=residential"
+                        status: existing
+                        footprintM2: 113.1
+                        perimeterM: 43
+                        floors: 1
+                        floorAreaM2: 113.1
+                        data: osm
+                    registry:
+                      machine: GM-KMC-0001-2389-6
+                      home: Bakau 2389
+                      written: BAKAU 2389 · KANIFING
+                      lieu: KMC-0001
+                      official_name: Bakau
+                      number: "2389"
+                      check: "6"
+                      status: provisional
+                      issued: bulk
+                      issued_at: "2026-10-20T05:00:52Z"
+                      entrance_lat: "13.4784100"
+                      entrance_lng: "-16.6787355"
+                      entrance_kind: centre
+                      plus_code: "7C55F8HC+9G6"
+                      class: res.maison
+                      use: residential
+                      kind: un_batiment
+                      structures: "1"
+                      floor_area_m2: "113.1"
+                      postcode: ""
+                      coverage: ""
+                      official_address: ""
+                      anchor_lat: "13.4784103"
+                      anchor_lng: "-16.6787356"
+                      rule: single
+                      enclosed: "false"
+                    credit: "N-Ways Addressing for The Gambia, © N-WAYS LIMITED (nways.ng)"
+                code-council:
+                  value:
+                    machine: GM-BJL-0000-19459-5
+                    home: Banjul 19 459
+                    written: BANJUL 19 459 · BANJUL
+                    spoken: "Banjul, nineteen, four hundred and fifty-nine"
+                    status: provisional
+                    issued: bulk
+                    issuedAt: "2026-10-20T05:00:45Z"
+                    officialAddress: "30A Mam Mberry Njie Street"
+                    coverage: official
+                    area:
+                      id: BJL-0000
+                      plateName: Banjul
+                      officialName: Banjul
+                      nameProvisional: false
+                      nearTown: null
+                    zone:
+                      key: BJL
+                      name: Banjul
+                      iso: GM-B
+                    number: 19459
+                    check: 5
+                    entrance:
+                      lat: 13.4525239
+                      lng: -16.5779543
+                      kind: centre
+                    plusCode: "7C55FC3C+2R3"
+                    spot:
+                      code: "7C55FC3C+2R3"
+                      short: FC3C+2R3
+                      withTown: FC3C+2R3 Banjul
+                    centre:
+                      lat: 13.4525236
+                      lng: -16.5779546
+                    compound:
+                      class: ind.usine
+                      use: industrial
+                      kind: un_batiment
+                      structures: 1
+                      floorAreaM2: 73.7
+                      rule: single
+                      enclosed: false
+                    postcode: null
+                    structures:
+                      - index: 1
+                        id: "osm:way/638146319"
+                        use: ind.usine
+                        confidence: 0.85
+                        source: "osm:building=service"
+                        status: existing
+                        footprintM2: 73.7
+                        perimeterM: 34.4
+                        floors: 1
+                        floorAreaM2: 73.7
+                        data: osm
+                        name: Republic of The Gambia Nurses and Midwives Council
+                    registry:
+                      machine: GM-BJL-0000-19459-5
+                      home: Banjul 19 459
+                      written: BANJUL 19 459 · BANJUL
+                      lieu: BJL-0000
+                      official_name: Banjul
+                      number: "19459"
+                      check: "5"
+                      status: provisional
+                      issued: bulk
+                      issued_at: "2026-10-20T05:00:45Z"
+                      entrance_lat: "13.4525239"
+                      entrance_lng: "-16.5779543"
+                      entrance_kind: centre
+                      plus_code: "7C55FC3C+2R3"
+                      class: ind.usine
+                      use: industrial
+                      kind: un_batiment
+                      structures: "1"
+                      floor_area_m2: "73.7"
+                      postcode: ""
+                      coverage: official
+                      official_address: "30A Mam Mberry Njie Street"
+                      anchor_lat: "13.4525236"
+                      anchor_lng: "-16.5779546"
+                      rule: single
+                      enclosed: "false"
+                    credit: "N-Ways Addressing for The Gambia, © N-WAYS LIMITED (nways.ng)"
+        "400":
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                code-not-a-code:
+                  value:
+                    error:
+                      code: not_a_code
+                      message: "'Bakau 2389' is not a machine code. Machine codes look like GM-KMC-0001-2389-6."
+        "404":
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                code-not-issued:
+                  value:
+                    error:
+                      code: not_issued
+                      message: GM-KMC-0001-2390-6 is a valid code but no compound has it.
+        "422":
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                code-bad-check:
+                  value:
+                    error:
+                      code: bad_check
+                      message: "GM-KMC-0001-2389-7: the check digit does not match. A digit is wrong or two are swapped; the code is refused rather than guessed."
+    patch:
+      summary: Change status or move the entrance (designated issuer only)
+      operationId: patchCode
+      security:
+        - bearer: []
+      parameters:
+        - name: machine
+          in: path
+          required: true
+          description: Machine form
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PatchRequest"
+            examples:
+              confirm:
+                value:
+                  status: confirmed
+              entrance:
+                value:
+                  entrance:
+                    lat: 13.3497
+                    lng: -16.6247
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Card"
+              examples:
+                patch-confirm:
+                  value:
+                    machine: GM-WCR-0243-11946-0
+                    home: Karewan 11 946
+                    written: KAREWAN 11 946 · WEST COAST
+                    spoken: "Karewan, eleven, nine hundred and forty-six"
+                    status: confirmed
+                    issued: on-demand
+                    issuedAt: "2026-10-21T13:53:22Z"
+                    officialAddress: "89XG+R4F Karewan"
+                    coverage: official
+                    area:
+                      id: WCR-0243
+                      plateName: Karewan
+                      officialName: Karewan
+                      nameProvisional: false
+                      nearTown: null
+                    zone:
+                      key: WCR
+                      name: West Coast
+                      iso: GM-W
+                    number: 11946
+                    check: 0
+                    entrance:
+                      lat: 13.3495584
+                      lng: -16.6246945
+                      kind: centre
+                    plusCode: "7C5589XG+R4F"
+                    spot:
+                      code: "7C5589XG+R4F"
+                      short: "89XG+R4F"
+                      withTown: "89XG+R4F Karewan"
+                    centre:
+                      lat: 13.3495584
+                      lng: -16.6246945
+                    compound:
+                      class: null
+                      use: unknown
+                      kind: un_batiment
+                      structures: 0
+                      floorAreaM2: 0.0
+                      rule: null
+                      enclosed: false
+                    postcode: null
+                    structures: []
+                    registry:
+                      machine: GM-WCR-0243-11946-0
+                      home: Karewan 11 946
+                      written: KAREWAN 11 946 · WEST COAST
+                      lieu: WCR-0243
+                      official_name: Karewan
+                      number: "11946"
+                      check: "0"
+                      status: confirmed
+                      issued: on-demand
+                      issued_at: "2026-10-21T13:53:22Z"
+                      entrance_lat: "13.3495584"
+                      entrance_lng: "-16.6246945"
+                      entrance_kind: centre
+                      plus_code: "7C5589XG+R4F"
+                      class: ""
+                      use: unknown
+                      kind: un_batiment
+                      structures: "0"
+                      floor_area_m2: "0.0"
+                      postcode: ""
+                      coverage: ""
+                      official_address: ""
+                      anchor_lat: "13.3495584"
+                      anchor_lng: "-16.6246945"
+                      rule: ""
+                      enclosed: "false"
+                    credit: "N-Ways Addressing for The Gambia, © N-WAYS LIMITED (nways.ng)"
+                patch-entrance:
+                  value:
+                    machine: GM-WCR-0243-11946-0
+                    home: Karewan 11 946
+                    written: KAREWAN 11 946 · WEST COAST
+                    spoken: "Karewan, eleven, nine hundred and forty-six"
+                    status: confirmed
+                    issued: on-demand
+                    issuedAt: "2026-10-21T13:53:22Z"
+                    officialAddress: "89XG+V4M Karewan"
+                    coverage: official
+                    area:
+                      id: WCR-0243
+                      plateName: Karewan
+                      officialName: Karewan
+                      nameProvisional: false
+                      nearTown: null
+                    zone:
+                      key: WCR
+                      name: West Coast
+                      iso: GM-W
+                    number: 11946
+                    check: 0
+                    entrance:
+                      lat: 13.3497
+                      lng: -16.6247
+                      kind: gate
+                    plusCode: "7C5589XG+V4M"
+                    spot:
+                      code: "7C5589XG+V4M"
+                      short: "89XG+V4M"
+                      withTown: "89XG+V4M Karewan"
+                    centre:
+                      lat: 13.3495584
+                      lng: -16.6246945
+                    compound:
+                      class: null
+                      use: unknown
+                      kind: un_batiment
+                      structures: 0
+                      floorAreaM2: 0.0
+                      rule: null
+                      enclosed: false
+                    postcode: null
+                    structures: []
+                    registry:
+                      machine: GM-WCR-0243-11946-0
+                      home: Karewan 11 946
+                      written: KAREWAN 11 946 · WEST COAST
+                      lieu: WCR-0243
+                      official_name: Karewan
+                      number: "11946"
+                      check: "0"
+                      status: confirmed
+                      issued: on-demand
+                      issued_at: "2026-10-21T13:53:22Z"
+                      entrance_lat: "13.3497000"
+                      entrance_lng: "-16.6247000"
+                      entrance_kind: gate
+                      plus_code: "7C5589XG+V4M"
+                      class: ""
+                      use: unknown
+                      kind: un_batiment
+                      structures: "0"
+                      floor_area_m2: "0.0"
+                      postcode: ""
+                      coverage: ""
+                      official_address: ""
+                      anchor_lat: "13.3495584"
+                      anchor_lng: "-16.6246945"
+                      rule: ""
+                      enclosed: "false"
+                    credit: "N-Ways Addressing for The Gambia, © N-WAYS LIMITED (nways.ng)"
+                patch-retire:
+                  value:
+                    machine: GM-KMC-0001-2392-2
+                    home: Bakau 2392
+                    written: BAKAU 2392 · KANIFING
+                    spoken: "Bakau, twenty-three, ninety-two"
+                    status: retired
+                    issued: bulk
+                    issuedAt: "2026-10-20T05:00:52Z"
+                    officialAddress: F8HC+CF9 Bakau
+                    coverage: official
+                    area:
+                      id: KMC-0001
+                      plateName: Bakau
+                      officialName: Bakau
+                      nameProvisional: false
+                      nearTown: null
+                    zone:
+                      key: KMC
+                      name: Kanifing
+                      iso: null
+                    number: 2392
+                    check: 2
+                    entrance:
+                      lat: 13.4785437
+                      lng: -16.6787632
+                      kind: centre
+                    plusCode: "7C55F8HC+CF9"
+                    spot:
+                      code: "7C55F8HC+CF9"
+                      short: F8HC+CF9
+                      withTown: F8HC+CF9 Bakau
+                    centre:
+                      lat: 13.4785439
+                      lng: -16.6787633
+                    compound:
+                      class: res.maison
+                      use: residential
+                      kind: un_batiment
+                      structures: 1
+                      floorAreaM2: 149.5
+                      rule: single
+                      enclosed: false
+                    postcode: null
+                    structures:
+                      - index: 1
+                        id: "osm:way/933561062"
+                        use: res.maison
+                        confidence: 0.85
+                        source: "osm:building=residential"
+                        status: existing
+                        footprintM2: 149.5
+                        perimeterM: 50.2
+                        floors: 1
+                        floorAreaM2: 149.5
+                        data: osm
+                    registry:
+                      machine: GM-KMC-0001-2392-2
+                      home: Bakau 2392
+                      written: BAKAU 2392 · KANIFING
+                      lieu: KMC-0001
+                      official_name: Bakau
+                      number: "2392"
+                      check: "2"
+                      status: retired
+                      issued: bulk
+                      issued_at: "2026-10-20T05:00:52Z"
+                      entrance_lat: "13.4785437"
+                      entrance_lng: "-16.6787632"
+                      entrance_kind: centre
+                      plus_code: "7C55F8HC+CF9"
+                      class: res.maison
+                      use: residential
+                      kind: un_batiment
+                      structures: "1"
+                      floor_area_m2: "149.5"
+                      postcode: ""
+                      coverage: ""
+                      official_address: ""
+                      anchor_lat: "13.4785439"
+                      anchor_lng: "-16.6787633"
+                      rule: single
+                      enclosed: "false"
+                    credit: "N-Ways Addressing for The Gambia, © N-WAYS LIMITED (nways.ng)"
+        "409":
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                patch-retired-again:
+                  value:
+                    error:
+                      code: retired
+                      message: Bakau 2392 is retired. A retired code never comes back and its number is never reused.
+        "422":
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                patch-bad-status:
+                  value:
+                    error:
+                      code: bad_status
+                      message: "A provisional code can become confirmed or retired, not 'approved'."
+  /v1/find:
+    get:
+      summary: "Resolve a remembered code, machine code, official address or Plus Code"
+      operationId: find
+      parameters:
+        - name: q
+          in: query
+          required: true
+          description: What to resolve
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Find"
+              examples:
+                find-remembered:
+                  value:
+                    query: bakau 23 89
+                    kind: remembered
+                    results:
+                      - machine: GM-KMC-0001-2389-6
+                        home: Bakau 2389
+                        written: BAKAU 2389 · KANIFING
+                        spoken: "Bakau, twenty-three, eighty-nine"
+                        status: provisional
+                        issued: bulk
+                        issuedAt: "2026-10-20T05:00:52Z"
+                        officialAddress: F8HC+9G6 Bakau
+                        coverage: official
+                        area:
+                          id: KMC-0001
+                          plateName: Bakau
+                          officialName: Bakau
+                          nameProvisional: false
+                          nearTown: null
+                        zone:
+                          key: KMC
+                          name: Kanifing
+                          iso: null
+                        number: 2389
+                        check: 6
+                        entrance:
+                          lat: 13.47841
+                          lng: -16.6787355
+                          kind: centre
+                        plusCode: "7C55F8HC+9G6"
+                        spot:
+                          code: "7C55F8HC+9G6"
+                          short: F8HC+9G6
+                          withTown: F8HC+9G6 Bakau
+                        centre:
+                          lat: 13.4784103
+                          lng: -16.6787356
+                        compound:
+                          class: res.maison
+                          use: residential
+                          kind: un_batiment
+                          structures: 1
+                          floorAreaM2: 113.1
+                          rule: single
+                          enclosed: false
+                        postcode: null
+                        structures:
+                          - index: 1
+                            id: "osm:way/933561063"
+                            use: res.maison
+                            confidence: 0.85
+                            source: "osm:building=residential"
+                            status: existing
+                            footprintM2: 113.1
+                            perimeterM: 43
+                            floors: 1
+                            floorAreaM2: 113.1
+                            data: osm
+                        registry:
+                          machine: GM-KMC-0001-2389-6
+                          home: Bakau 2389
+                          written: BAKAU 2389 · KANIFING
+                          lieu: KMC-0001
+                          official_name: Bakau
+                          number: "2389"
+                          check: "6"
+                          status: provisional
+                          issued: bulk
+                          issued_at: "2026-10-20T05:00:52Z"
+                          entrance_lat: "13.4784100"
+                          entrance_lng: "-16.6787355"
+                          entrance_kind: centre
+                          plus_code: "7C55F8HC+9G6"
+                          class: res.maison
+                          use: residential
+                          kind: un_batiment
+                          structures: "1"
+                          floor_area_m2: "113.1"
+                          postcode: ""
+                          coverage: ""
+                          official_address: ""
+                          anchor_lat: "13.4784103"
+                          anchor_lng: "-16.6787356"
+                          rule: single
+                          enclosed: "false"
+                        credit: "N-Ways Addressing for The Gambia, © N-WAYS LIMITED (nways.ng)"
+                find-same-name:
+                  value:
+                    query: Brikama 2513
+                    kind: remembered
+                    results:
+                      - machine: GM-WCR-0055-2513-6
+                        home: Brikama 2513
+                        written: BRIKAMA 2513 · WEST COAST
+                        spoken: "Brikama, twenty-five, thirteen"
+                        status: provisional
+                        issued: bulk
+                        issuedAt: "2026-10-20T05:01:08Z"
+                        officialAddress: "79C4+GRP Brikama"
+                        coverage: official
+                        area:
+                          id: WCR-0055
+                          plateName: Brikama
+                          officialName: Brikama
+                          nameProvisional: false
+                          nearTown: null
+                        zone:
+                          key: WCR
+                          name: West Coast
+                          iso: GM-W
+                        number: 2513
+                        check: 6
+                        entrance:
+                          lat: 13.2713373
+                          lng: -16.6429189
+                          kind: centre
+                        plusCode: "7C5579C4+GRP"
+                        spot:
+                          code: "7C5579C4+GRP"
+                          short: "79C4+GRP"
+                          withTown: "79C4+GRP Brikama"
+                        centre:
+                          lat: 13.2713388
+                          lng: -16.6429254
+                        compound:
+                          class: res.concession
+                          use: residential
+                          kind: concession
+                          structures: 2
+                          floorAreaM2: 213.3
+                          rule: satellite
+                          enclosed: false
+                        postcode: null
+                        structures:
+                          - index: 1
+                            id: "nw:29531130119b"
+                            use: res.concession
+                            confidence: 0.45
+                            source: "shape:multi-structure compound"
+                            status: existing
+                            footprintM2: 198.9
+                            perimeterM: 59.6
+                            floors: 1
+                            floorAreaM2: 198.9
+                            data: ml
+                          - index: 2
+                            id: "nw:e6f9d3501f65"
+                            use: res.annexe
+                            confidence: 0.4
+                            source: "shape:satellite"
+                            status: existing
+                            footprintM2: 14.4
+                            perimeterM: 15.4
+                            floors: 1
+                            floorAreaM2: 14.4
+                            data: ml
+                        registry:
+                          machine: GM-WCR-0055-2513-6
+                          home: Brikama 2513
+                          written: BRIKAMA 2513 · WEST COAST
+                          lieu: WCR-0055
+                          official_name: Brikama
+                          number: "2513"
+                          check: "6"
+                          status: provisional
+                          issued: bulk
+                          issued_at: "2026-10-20T05:01:08Z"
+                          entrance_lat: "13.2713373"
+                          entrance_lng: "-16.6429189"
+                          entrance_kind: centre
+                          plus_code: "7C5579C4+GRP"
+                          class: res.concession
+                          use: residential
+                          kind: concession
+                          structures: "2"
+                          floor_area_m2: "213.3"
+                          postcode: ""
+                          coverage: ""
+                          official_address: ""
+                          anchor_lat: "13.2713388"
+                          anchor_lng: "-16.6429254"
+                          rule: satellite
+                          enclosed: "false"
+                        credit: "N-Ways Addressing for The Gambia, © N-WAYS LIMITED (nways.ng)"
+                find-official:
+                  value:
+                    query: F8HC+9G6 Bakau
+                    kind: official
+                    results:
+                      - machine: GM-KMC-0001-2389-6
+                        home: Bakau 2389
+                        written: BAKAU 2389 · KANIFING
+                        spoken: "Bakau, twenty-three, eighty-nine"
+                        status: provisional
+                        issued: bulk
+                        issuedAt: "2026-10-20T05:00:52Z"
+                        officialAddress: F8HC+9G6 Bakau
+                        coverage: official
+                        area:
+                          id: KMC-0001
+                          plateName: Bakau
+                          officialName: Bakau
+                          nameProvisional: false
+                          nearTown: null
+                        zone:
+                          key: KMC
+                          name: Kanifing
+                          iso: null
+                        number: 2389
+                        check: 6
+                        entrance:
+                          lat: 13.47841
+                          lng: -16.6787355
+                          kind: centre
+                        plusCode: "7C55F8HC+9G6"
+                        spot:
+                          code: "7C55F8HC+9G6"
+                          short: F8HC+9G6
+                          withTown: F8HC+9G6 Bakau
+                        centre:
+                          lat: 13.4784103
+                          lng: -16.6787356
+                        compound:
+                          class: res.maison
+                          use: residential
+                          kind: un_batiment
+                          structures: 1
+                          floorAreaM2: 113.1
+                          rule: single
+                          enclosed: false
+                        postcode: null
+                        structures:
+                          - index: 1
+                            id: "osm:way/933561063"
+                            use: res.maison
+                            confidence: 0.85
+                            source: "osm:building=residential"
+                            status: existing
+                            footprintM2: 113.1
+                            perimeterM: 43
+                            floors: 1
+                            floorAreaM2: 113.1
+                            data: osm
+                        registry:
+                          machine: GM-KMC-0001-2389-6
+                          home: Bakau 2389
+                          written: BAKAU 2389 · KANIFING
+                          lieu: KMC-0001
+                          official_name: Bakau
+                          number: "2389"
+                          check: "6"
+                          status: provisional
+                          issued: bulk
+                          issued_at: "2026-10-20T05:00:52Z"
+                          entrance_lat: "13.4784100"
+                          entrance_lng: "-16.6787355"
+                          entrance_kind: centre
+                          plus_code: "7C55F8HC+9G6"
+                          class: res.maison
+                          use: residential
+                          kind: un_batiment
+                          structures: "1"
+                          floor_area_m2: "113.1"
+                          postcode: ""
+                          coverage: ""
+                          official_address: ""
+                          anchor_lat: "13.4784103"
+                          anchor_lng: "-16.6787356"
+                          rule: single
+                          enclosed: "false"
+                        credit: "N-Ways Addressing for The Gambia, © N-WAYS LIMITED (nways.ng)"
+                find-plus:
+                  value:
+                    query: "7C55F8HC+9G6"
+                    kind: plus
+                    results:
+                      - machine: GM-KMC-0001-2389-6
+                        home: Bakau 2389
+                        written: BAKAU 2389 · KANIFING
+                        spoken: "Bakau, twenty-three, eighty-nine"
+                        status: provisional
+                        issued: bulk
+                        issuedAt: "2026-10-20T05:00:52Z"
+                        officialAddress: F8HC+9G6 Bakau
+                        coverage: official
+                        area:
+                          id: KMC-0001
+                          plateName: Bakau
+                          officialName: Bakau
+                          nameProvisional: false
+                          nearTown: null
+                        zone:
+                          key: KMC
+                          name: Kanifing
+                          iso: null
+                        number: 2389
+                        check: 6
+                        entrance:
+                          lat: 13.47841
+                          lng: -16.6787355
+                          kind: centre
+                        plusCode: "7C55F8HC+9G6"
+                        spot:
+                          code: "7C55F8HC+9G6"
+                          short: F8HC+9G6
+                          withTown: F8HC+9G6 Bakau
+                        centre:
+                          lat: 13.4784103
+                          lng: -16.6787356
+                        compound:
+                          class: res.maison
+                          use: residential
+                          kind: un_batiment
+                          structures: 1
+                          floorAreaM2: 113.1
+                          rule: single
+                          enclosed: false
+                        postcode: null
+                        structures:
+                          - index: 1
+                            id: "osm:way/933561063"
+                            use: res.maison
+                            confidence: 0.85
+                            source: "osm:building=residential"
+                            status: existing
+                            footprintM2: 113.1
+                            perimeterM: 43
+                            floors: 1
+                            floorAreaM2: 113.1
+                            data: osm
+                        registry:
+                          machine: GM-KMC-0001-2389-6
+                          home: Bakau 2389
+                          written: BAKAU 2389 · KANIFING
+                          lieu: KMC-0001
+                          official_name: Bakau
+                          number: "2389"
+                          check: "6"
+                          status: provisional
+                          issued: bulk
+                          issued_at: "2026-10-20T05:00:52Z"
+                          entrance_lat: "13.4784100"
+                          entrance_lng: "-16.6787355"
+                          entrance_kind: centre
+                          plus_code: "7C55F8HC+9G6"
+                          class: res.maison
+                          use: residential
+                          kind: un_batiment
+                          structures: "1"
+                          floor_area_m2: "113.1"
+                          postcode: ""
+                          coverage: ""
+                          official_address: ""
+                          anchor_lat: "13.4784103"
+                          anchor_lng: "-16.6787356"
+                          rule: single
+                          enclosed: "false"
+                        credit: "N-Ways Addressing for The Gambia, © N-WAYS LIMITED (nways.ng)"
+                find-council:
+                  value:
+                    query: "30A Mam Mberry Njie Street"
+                    kind: official
+                    results:
+                      - machine: GM-BJL-0000-19459-5
+                        home: Banjul 19 459
+                        written: BANJUL 19 459 · BANJUL
+                        spoken: "Banjul, nineteen, four hundred and fifty-nine"
+                        status: provisional
+                        issued: bulk
+                        issuedAt: "2026-10-20T05:00:45Z"
+                        officialAddress: "30A Mam Mberry Njie Street"
+                        coverage: official
+                        area:
+                          id: BJL-0000
+                          plateName: Banjul
+                          officialName: Banjul
+                          nameProvisional: false
+                          nearTown: null
+                        zone:
+                          key: BJL
+                          name: Banjul
+                          iso: GM-B
+                        number: 19459
+                        check: 5
+                        entrance:
+                          lat: 13.4525239
+                          lng: -16.5779543
+                          kind: centre
+                        plusCode: "7C55FC3C+2R3"
+                        spot:
+                          code: "7C55FC3C+2R3"
+                          short: FC3C+2R3
+                          withTown: FC3C+2R3 Banjul
+                        centre:
+                          lat: 13.4525236
+                          lng: -16.5779546
+                        compound:
+                          class: ind.usine
+                          use: industrial
+                          kind: un_batiment
+                          structures: 1
+                          floorAreaM2: 73.7
+                          rule: single
+                          enclosed: false
+                        postcode: null
+                        structures:
+                          - index: 1
+                            id: "osm:way/638146319"
+                            use: ind.usine
+                            confidence: 0.85
+                            source: "osm:building=service"
+                            status: existing
+                            footprintM2: 73.7
+                            perimeterM: 34.4
+                            floors: 1
+                            floorAreaM2: 73.7
+                            data: osm
+                            name: Republic of The Gambia Nurses and Midwives Council
+                        registry:
+                          machine: GM-BJL-0000-19459-5
+                          home: Banjul 19 459
+                          written: BANJUL 19 459 · BANJUL
+                          lieu: BJL-0000
+                          official_name: Banjul
+                          number: "19459"
+                          check: "5"
+                          status: provisional
+                          issued: bulk
+                          issued_at: "2026-10-20T05:00:45Z"
+                          entrance_lat: "13.4525239"
+                          entrance_lng: "-16.5779543"
+                          entrance_kind: centre
+                          plus_code: "7C55FC3C+2R3"
+                          class: ind.usine
+                          use: industrial
+                          kind: un_batiment
+                          structures: "1"
+                          floor_area_m2: "73.7"
+                          postcode: ""
+                          coverage: official
+                          official_address: "30A Mam Mberry Njie Street"
+                          anchor_lat: "13.4525236"
+                          anchor_lng: "-16.5779546"
+                          rule: single
+                          enclosed: "false"
+                        credit: "N-Ways Addressing for The Gambia, © N-WAYS LIMITED (nways.ng)"
+                find-machine:
+                  value:
+                    query: GM-KMC-0001-2389-6
+                    kind: machine
+                    results:
+                      - machine: GM-KMC-0001-2389-6
+                        home: Bakau 2389
+                        written: BAKAU 2389 · KANIFING
+                        spoken: "Bakau, twenty-three, eighty-nine"
+                        status: provisional
+                        issued: bulk
+                        issuedAt: "2026-10-20T05:00:52Z"
+                        officialAddress: F8HC+9G6 Bakau
+                        coverage: official
+                        area:
+                          id: KMC-0001
+                          plateName: Bakau
+                          officialName: Bakau
+                          nameProvisional: false
+                          nearTown: null
+                        zone:
+                          key: KMC
+                          name: Kanifing
+                          iso: null
+                        number: 2389
+                        check: 6
+                        entrance:
+                          lat: 13.47841
+                          lng: -16.6787355
+                          kind: centre
+                        plusCode: "7C55F8HC+9G6"
+                        spot:
+                          code: "7C55F8HC+9G6"
+                          short: F8HC+9G6
+                          withTown: F8HC+9G6 Bakau
+                        centre:
+                          lat: 13.4784103
+                          lng: -16.6787356
+                        compound:
+                          class: res.maison
+                          use: residential
+                          kind: un_batiment
+                          structures: 1
+                          floorAreaM2: 113.1
+                          rule: single
+                          enclosed: false
+                        postcode: null
+                        structures:
+                          - index: 1
+                            id: "osm:way/933561063"
+                            use: res.maison
+                            confidence: 0.85
+                            source: "osm:building=residential"
+                            status: existing
+                            footprintM2: 113.1
+                            perimeterM: 43
+                            floors: 1
+                            floorAreaM2: 113.1
+                            data: osm
+                        registry:
+                          machine: GM-KMC-0001-2389-6
+                          home: Bakau 2389
+                          written: BAKAU 2389 · KANIFING
+                          lieu: KMC-0001
+                          official_name: Bakau
+                          number: "2389"
+                          check: "6"
+                          status: provisional
+                          issued: bulk
+                          issued_at: "2026-10-20T05:00:52Z"
+                          entrance_lat: "13.4784100"
+                          entrance_lng: "-16.6787355"
+                          entrance_kind: centre
+                          plus_code: "7C55F8HC+9G6"
+                          class: res.maison
+                          use: residential
+                          kind: un_batiment
+                          structures: "1"
+                          floor_area_m2: "113.1"
+                          postcode: ""
+                          coverage: ""
+                          official_address: ""
+                          anchor_lat: "13.4784103"
+                          anchor_lng: "-16.6787356"
+                          rule: single
+                          enclosed: "false"
+                        credit: "N-Ways Addressing for The Gambia, © N-WAYS LIMITED (nways.ng)"
+        "400":
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                find-missing:
+                  value:
+                    error:
+                      code: missing_query
+                      message: "Give q: a home code (\"Bakau 2389\"), a machine code, an official address or a Plus Code."
+        "404":
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                find-unknown:
+                  value:
+                    error:
+                      code: unknown
+                      message: No place in The Gambia has the home code Nowhereville 1234. Check the place name and the number on the plate.
+                find-not-issued:
+                  value:
+                    error:
+                      code: not_issued
+                      message: "No compound has Bakau 2390 yet (the number is in the range of Bakau, Kanifing)."
+        "422":
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                find-bad-check:
+                  value:
+                    error:
+                      code: bad_check
+                      message: "GM-KMC-0001-2389-7: the check digit does not match. A digit is wrong or two are swapped; the code is refused rather than guessed."
+  /v1/at:
+    get:
+      summary: The code of the compound at a point
+      operationId: at
+      parameters:
+        - name: lat
+          in: query
+          required: true
+          description: "Latitude, WGS 84 degrees"
+          schema:
+            type: number
+        - name: lng
+          in: query
+          required: true
+          description: "Longitude, WGS 84 degrees"
+          schema:
+            type: number
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/At"
+              examples:
+                at-found:
+                  value:
+                    status: found
+                    distanceM: 0
+                    code:
+                      machine: GM-KMC-0001-2389-6
+                      home: Bakau 2389
+                      written: BAKAU 2389 · KANIFING
+                      spoken: "Bakau, twenty-three, eighty-nine"
+                      status: provisional
+                      issued: bulk
+                      issuedAt: "2026-10-20T05:00:52Z"
+                      officialAddress: F8HC+9G6 Bakau
+                      coverage: official
+                      area:
+                        id: KMC-0001
+                        plateName: Bakau
+                        officialName: Bakau
+                        nameProvisional: false
+                        nearTown: null
+                      zone:
+                        key: KMC
+                        name: Kanifing
+                        iso: null
+                      number: 2389
+                      check: 6
+                      entrance:
+                        lat: 13.47841
+                        lng: -16.6787355
+                        kind: centre
+                      plusCode: "7C55F8HC+9G6"
+                      spot:
+                        code: "7C55F8HC+9G6"
+                        short: F8HC+9G6
+                        withTown: F8HC+9G6 Bakau
+                      centre:
+                        lat: 13.4784103
+                        lng: -16.6787356
+                      compound:
+                        class: res.maison
+                        use: residential
+                        kind: un_batiment
+                        structures: 1
+                        floorAreaM2: 113.1
+                        rule: single
+                        enclosed: false
+                      postcode: null
+                      structures:
+                        - index: 1
+                          id: "osm:way/933561063"
+                          use: res.maison
+                          confidence: 0.85
+                          source: "osm:building=residential"
+                          status: existing
+                          footprintM2: 113.1
+                          perimeterM: 43
+                          floors: 1
+                          floorAreaM2: 113.1
+                          data: osm
+                      registry:
+                        machine: GM-KMC-0001-2389-6
+                        home: Bakau 2389
+                        written: BAKAU 2389 · KANIFING
+                        lieu: KMC-0001
+                        official_name: Bakau
+                        number: "2389"
+                        check: "6"
+                        status: provisional
+                        issued: bulk
+                        issued_at: "2026-10-20T05:00:52Z"
+                        entrance_lat: "13.4784100"
+                        entrance_lng: "-16.6787355"
+                        entrance_kind: centre
+                        plus_code: "7C55F8HC+9G6"
+                        class: res.maison
+                        use: residential
+                        kind: un_batiment
+                        structures: "1"
+                        floor_area_m2: "113.1"
+                        postcode: ""
+                        coverage: ""
+                        official_address: ""
+                        anchor_lat: "13.4784103"
+                        anchor_lng: "-16.6787356"
+                        rule: single
+                        enclosed: "false"
+                      credit: "N-Ways Addressing for The Gambia, © N-WAYS LIMITED (nways.ng)"
+                    zone:
+                      key: KMC
+                      name: Kanifing
+                at-none:
+                  value:
+                    status: none
+                    zone:
+                      key: LRR
+                      name: Lower River
+                    area:
+                      id: LRR-0161
+                      zone: LRR
+                      plateName: Sukuta
+                      officialName: Sukuta
+                      kind: locality
+                      position:
+                        lat: 13.533332
+                        lng: -15.199999
+                    spot:
+                      code: "7C56HR22+222"
+                      short: HR22+222
+                      withTown: HR22+222 Sukuta
+                      zone: LRR
+                      area: LRR-0161
+                      cell:
+                        south: 13.55
+                        west: -15.2
+                        north: 13.550025
+                        east: -15.1999688
+                at-outside:
+                  value:
+                    status: outside
+                    point:
+                      lat: 14.2
+                      lng: -16.0
+                    message: The point is outside The Gambia.
+        "400":
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                at-missing:
+                  value:
+                    error:
+                      code: missing_lng
+                      message: lng is required.
+  /v1/near:
+    get:
+      summary: Codes near a point
+      operationId: near
+      parameters:
+        - name: lat
+          in: query
+          required: true
+          description: "Latitude, WGS 84 degrees"
+          schema:
+            type: number
+        - name: lng
+          in: query
+          required: true
+          description: "Longitude, WGS 84 degrees"
+          schema:
+            type: number
+        - name: radius
+          in: query
+          required: false
+          description: "Metres, at most 500 (default 100)"
+          schema:
+            type: number
+            maximum: 500
+        - name: limit
+          in: query
+          required: false
+          description: At most 100 (default 100)
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Near"
+              examples:
+                near:
+                  value:
+                    point:
+                      lat: 13.47841
+                      lng: -16.67874
+                    radiusM: 25.0
+                    count: 2
+                    codes:
+                      - machine: GM-KMC-0001-2389-6
+                        home: Bakau 2389
+                        written: BAKAU 2389 · KANIFING
+                        spoken: "Bakau, twenty-three, eighty-nine"
+                        status: provisional
+                        issued: bulk
+                        issuedAt: "2026-10-20T05:00:52Z"
+                        officialAddress: F8HC+9G6 Bakau
+                        coverage: official
+                        area:
+                          id: KMC-0001
+                          plateName: Bakau
+                          officialName: Bakau
+                          nameProvisional: false
+                          nearTown: null
+                        zone:
+                          key: KMC
+                          name: Kanifing
+                          iso: null
+                        number: 2389
+                        check: 6
+                        entrance:
+                          lat: 13.47841
+                          lng: -16.6787355
+                          kind: centre
+                        plusCode: "7C55F8HC+9G6"
+                        spot:
+                          code: "7C55F8HC+9G6"
+                          short: F8HC+9G6
+                          withTown: F8HC+9G6 Bakau
+                        centre:
+                          lat: 13.4784103
+                          lng: -16.6787356
+                        distanceM: 0.5
+                      - machine: GM-KMC-0001-2392-2
+                        home: Bakau 2392
+                        written: BAKAU 2392 · KANIFING
+                        spoken: "Bakau, twenty-three, ninety-two"
+                        status: provisional
+                        issued: bulk
+                        issuedAt: "2026-10-20T05:00:52Z"
+                        officialAddress: F8HC+CF9 Bakau
+                        coverage: official
+                        area:
+                          id: KMC-0001
+                          plateName: Bakau
+                          officialName: Bakau
+                          nameProvisional: false
+                          nearTown: null
+                        zone:
+                          key: KMC
+                          name: Kanifing
+                          iso: null
+                        number: 2392
+                        check: 2
+                        entrance:
+                          lat: 13.4785437
+                          lng: -16.6787632
+                          kind: centre
+                        plusCode: "7C55F8HC+CF9"
+                        spot:
+                          code: "7C55F8HC+CF9"
+                          short: F8HC+CF9
+                          withTown: F8HC+CF9 Bakau
+                        centre:
+                          lat: 13.4785439
+                          lng: -16.6787633
+                        distanceM: 15.0
+        "400":
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                near-bad-radius:
+                  value:
+                    error:
+                      code: bad_radius
+                      message: "radius is in metres, more than 0 and at most 500."
+  /v1/verify:
+    get:
+      summary: Validate a machine code
+      operationId: verify
+      parameters:
+        - name: code
+          in: query
+          required: true
+          description: Machine form
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Verify"
+              examples:
+                verify-issued:
+                  value:
+                    code: GM-KMC-0001-2389-6
+                    valid: true
+                    reason: null
+                    issued: true
+                    status: provisional
+                    home: Bakau 2389
+                    written: BAKAU 2389 · KANIFING
+                verify-bad-check:
+                  value:
+                    code: GM-KMC-0001-2398-6
+                    valid: false
+                    reason: "check digit does not match: a digit is wrong or two are swapped"
+                    issued: false
+                    status: null
+        "400":
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                verify-missing:
+                  value:
+                    error:
+                      code: missing_code
+                      message: "Give code: a machine code such as GM-KMC-0001-2389-6."
+  /v1/spot:
+    get:
+      summary: The Plus Code of a point
+      operationId: spot
+      parameters:
+        - name: lat
+          in: query
+          required: true
+          description: "Latitude, WGS 84 degrees"
+          schema:
+            type: number
+        - name: lng
+          in: query
+          required: true
+          description: "Longitude, WGS 84 degrees"
+          schema:
+            type: number
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Spot"
+              examples:
+                spot:
+                  value:
+                    code: "7C55F8HC+8GF"
+                    short: F8HC+8GF
+                    withTown: F8HC+8GF Bakau
+                    zone: KMC
+                    area: KMC-0001
+                    cell:
+                      south: 13.4783
+                      west: -16.6787188
+                      north: 13.478325
+                      east: -16.6786875
+  /v1/spot/decode:
+    get:
+      summary: "Decode a Plus Code, full or short with its town"
+      operationId: spotDecode
+      parameters:
+        - name: code
+          in: query
+          required: true
+          description: "Full Plus Code, or short Plus Code and town"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SpotDecode"
+              examples:
+                spot-decode-short:
+                  value:
+                    query: F8HC+9G6 Bakau
+                    cells:
+                      - code: "7C55F8HC+9G6"
+                        centre:
+                          lat: 13.4784125
+                          lng: -16.6787344
+                        cell:
+                          south: 13.4784
+                          west: -16.67875
+                          north: 13.478425
+                          east: -16.6787188
+                        zone: KMC
+                        area: KMC-0001
+                        codes:
+                          - machine: GM-KMC-0001-2389-6
+                            home: Bakau 2389
+                            written: BAKAU 2389 · KANIFING
+                            spoken: "Bakau, twenty-three, eighty-nine"
+                            status: provisional
+                            issued: bulk
+                            issuedAt: "2026-10-20T05:00:52Z"
+                            officialAddress: F8HC+9G6 Bakau
+                            coverage: official
+                            area:
+                              id: KMC-0001
+                              plateName: Bakau
+                              officialName: Bakau
+                              nameProvisional: false
+                              nearTown: null
+                            zone:
+                              key: KMC
+                              name: Kanifing
+                              iso: null
+                            number: 2389
+                            check: 6
+                            entrance:
+                              lat: 13.47841
+                              lng: -16.6787355
+                              kind: centre
+                            plusCode: "7C55F8HC+9G6"
+                            spot:
+                              code: "7C55F8HC+9G6"
+                              short: F8HC+9G6
+                              withTown: F8HC+9G6 Bakau
+                            centre:
+                              lat: 13.4784103
+                              lng: -16.6787356
+                spot-decode-full:
+                  value:
+                    query: "7C55F8HC+8GF"
+                    cells:
+                      - code: "7C55F8HC+8GF"
+                        centre:
+                          lat: 13.4783125
+                          lng: -16.6787031
+                        cell:
+                          south: 13.4783
+                          west: -16.6787188
+                          north: 13.478325
+                          east: -16.6786875
+                        zone: KMC
+                        area: KMC-0001
+                        codes: []
+        "400":
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                spot-decode-no-town:
+                  value:
+                    error:
+                      code: short_plus_code
+                      message: "F8HC+9G6 is a short Plus Code: give the town after it, as in \"F8HC+9G6 Bakau\"."
+  /v1/zones:
+    get:
+      summary: The seven zones
+      operationId: zones
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Zones"
+              examples:
+                zones:
+                  value:
+                    zones:
+                      - key: BJL
+                        index: 0
+                        name: Banjul
+                        iso: GM-B
+                        codes: 4320
+                        areas: 1
+                      - key: CRR
+                        index: 1
+                        name: Central River
+                        iso: GM-M
+                        codes: 54222
+                        areas: 803
+                      - key: KMC
+                        index: 2
+                        name: Kanifing
+                        iso: null
+                        codes: 45338
+                        areas: 35
+                      - key: LRR
+                        index: 3
+                        name: Lower River
+                        iso: GM-L
+                        codes: 19377
+                        areas: 181
+                      - key: NBR
+                        index: 4
+                        name: North Bank
+                        iso: GM-N
+                        codes: 53630
+                        areas: 431
+                      - key: URR
+                        index: 5
+                        name: Upper River
+                        iso: GM-U
+                        codes: 48103
+                        areas: 478
+                      - key: WCR
+                        index: 6
+                        name: West Coast
+                        iso: GM-W
+                        codes: 246041
+                        areas: 418
+  "/v1/zones/{key}":
+    get:
+      summary: One zone with its areas
+      operationId: zone
+      parameters:
+        - name: key
+          in: path
+          required: true
+          description: "Zone key, e.g. KMC"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ZoneDetail"
+              examples:
+                zone:
+                  value:
+                    key: BJL
+                    index: 0
+                    name: Banjul
+                    iso: GM-B
+                    codes: 4320
+                    areas:
+                      - id: BJL-0000
+                        zone: BJL
+                        plateName: Banjul
+                        officialName: Banjul
+                        kind: city
+                        position:
+                          lat: 13.455351
+                          lng: -16.575649
+                        codes: 4320
+        "404":
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                zone-unknown:
+                  value:
+                    error:
+                      code: unknown_zone
+                      message: "There is no zone XYZ. The zones are BJL, CRR, KMC, LRR, NBR, URR, WCR."
+  "/v1/zones/{key}/codes":
+    get:
+      summary: "Every code of a zone, paged"
+      operationId: zoneCodes
+      parameters:
+        - name: key
+          in: path
+          required: true
+          description: Zone key
+          schema:
+            type: string
+        - name: after
+          in: query
+          required: false
+          description: "The `next` of the previous page"
+          schema:
+            type: string
+        - name: limit
+          in: query
+          required: false
+          description: "Page size, at most 1000 (default 100)"
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 1000
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ZoneCodes"
+              examples:
+                zone-codes:
+                  value:
+                    zone: KMC
+                    codes:
+                      - machine: GM-KMC-0000-1001-5
+                        home: Ampaya 1001
+                        written: AMPAYA 1001 · KANIFING
+                        spoken: "Ampaya, ten, oh one"
+                        status: provisional
+                        issued: bulk
+                        issuedAt: "2026-10-20T05:00:52Z"
+                        officialAddress: C8W5+GV4 Ampaya
+                        coverage: official
+                        area:
+                          id: KMC-0000
+                          plateName: Ampaya
+                          officialName: Ampaya
+                          nameProvisional: false
+                          nearTown: null
+                        zone:
+                          key: KMC
+                          name: Kanifing
+                          iso: null
+                        number: 1001
+                        check: 5
+                        entrance:
+                          lat: 13.4462745
+                          lng: -16.6902836
+                          kind: centre
+                        plusCode: "7C55C8W5+GV4"
+                        spot:
+                          code: "7C55C8W5+GV4"
+                          short: C8W5+GV4
+                          withTown: C8W5+GV4 Ampaya
+                        centre:
+                          lat: 13.4462748
+                          lng: -16.6902841
+                      - machine: GM-KMC-0000-1004-4
+                        home: Ampaya 1004
+                        written: AMPAYA 1004 · KANIFING
+                        spoken: "Ampaya, ten, oh four"
+                        status: provisional
+                        issued: bulk
+                        issuedAt: "2026-10-20T05:00:52Z"
+                        officialAddress: C8W5+FWG Ampaya
+                        coverage: official
+                        area:
+                          id: KMC-0000
+                          plateName: Ampaya
+                          officialName: Ampaya
+                          nameProvisional: false
+                          nearTown: null
+                        zone:
+                          key: KMC
+                          name: Kanifing
+                          iso: null
+                        number: 1004
+                        check: 4
+                        entrance:
+                          lat: 13.4461775
+                          lng: -16.6901867
+                          kind: centre
+                        plusCode: "7C55C8W5+FWG"
+                        spot:
+                          code: "7C55C8W5+FWG"
+                          short: C8W5+FWG
+                          withTown: C8W5+FWG Ampaya
+                        centre:
+                          lat: 13.4461778
+                          lng: -16.6901864
+                    next: GM-KMC-0000-1004-4
+                zone-codes-next:
+                  value:
+                    zone: KMC
+                    codes:
+                      - machine: GM-KMC-0000-1007-7
+                        home: Ampaya 1007
+                        written: AMPAYA 1007 · KANIFING
+                        spoken: "Ampaya, ten, oh seven"
+                        status: provisional
+                        issued: bulk
+                        issuedAt: "2026-10-20T05:00:52Z"
+                        officialAddress: C8W6+V3Q Ampaya
+                        coverage: official
+                        area:
+                          id: KMC-0000
+                          plateName: Ampaya
+                          officialName: Ampaya
+                          nameProvisional: false
+                          nearTown: null
+                        zone:
+                          key: KMC
+                          name: Kanifing
+                          iso: null
+                        number: 1007
+                        check: 7
+                        entrance:
+                          lat: 13.4472179
+                          lng: -16.6897688
+                          kind: centre
+                        plusCode: "7C55C8W6+V3Q"
+                        spot:
+                          code: "7C55C8W6+V3Q"
+                          short: C8W6+V3Q
+                          withTown: C8W6+V3Q Ampaya
+                        centre:
+                          lat: 13.4472183
+                          lng: -16.6897689
+                      - machine: GM-KMC-0000-1010-6
+                        home: Ampaya 1010
+                        written: AMPAYA 1010 · KANIFING
+                        spoken: "Ampaya, ten, ten"
+                        status: provisional
+                        issued: bulk
+                        issuedAt: "2026-10-20T05:00:52Z"
+                        officialAddress: C8W5+MXC Ampaya
+                        coverage: official
+                        area:
+                          id: KMC-0000
+                          plateName: Ampaya
+                          officialName: Ampaya
+                          nameProvisional: false
+                          nearTown: null
+                        zone:
+                          key: KMC
+                          name: Kanifing
+                          iso: null
+                        number: 1010
+                        check: 6
+                        entrance:
+                          lat: 13.4466801
+                          lng: -16.6901081
+                          kind: centre
+                        plusCode: "7C55C8W5+MXC"
+                        spot:
+                          code: "7C55C8W5+MXC"
+                          short: C8W5+MXC
+                          withTown: C8W5+MXC Ampaya
+                        centre:
+                          lat: 13.44668
+                          lng: -16.6901078
+                    next: GM-KMC-0000-1010-6
+  /v1/areas:
+    get:
+      summary: "Areas by name (plate, official or alias)"
+      operationId: areas
+      parameters:
+        - name: name
+          in: query
+          required: true
+          description: A place name
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Areas"
+              examples:
+                areas-name:
+                  value:
+                    name: Brikama
+                    areas:
+                      - id: CRR-0071
+                        zone: CRR
+                        plateName: Brikama
+                        officialName: Brikama
+                        kind: locality
+                        position:
+                          lat: 13.566673
+                          lng: -15.333328
+                        codes: 32
+                      - id: CRR-0073
+                        zone: CRR
+                        plateName: Brikama
+                        officialName: Brikama Nding
+                        kind: village
+                        position:
+                          lat: 13.540043
+                          lng: -14.943374
+                        codes: 168
+                      - id: LRR-0017
+                        zone: LRR
+                        plateName: Brikama
+                        officialName: Brikama
+                        kind: locality
+                        position:
+                          lat: 13.316669
+                          lng: -15.933332
+                        codes: 14
+                      - id: NBR-0054
+                        zone: NBR
+                        plateName: Brikama
+                        officialName: Brikama
+                        kind: village
+                        position:
+                          lat: 13.576893
+                          lng: -15.884496
+                        codes: 9
+                      - id: WCR-0055
+                        zone: WCR
+                        plateName: Brikama
+                        officialName: Brikama
+                        kind: city
+                        position:
+                          lat: 13.274393
+                          lng: -16.645442
+                        codes: 2255
+        "400":
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                areas-missing:
+                  value:
+                    error:
+                      code: missing_name
+                      message: "Give name: a place name as on the plate or its official name."
+  "/v1/areas/{id}":
+    get:
+      summary: One area
+      operationId: area
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: "Area id, e.g. KMC-0001"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Area"
+              examples:
+                area:
+                  value:
+                    id: KMC-0001
+                    zone: KMC
+                    plateName: Bakau
+                    officialName: Bakau
+                    kind: suburb
+                    position:
+                      lat: 13.47745
+                      lng: -16.67791
+                    zoneName: Kanifing
+                    aliases: []
+                    nearTown: null
+                    nameProvisional: false
+                    coverage: nways
+                    nameKey: bakau
+                    family: 75
+                    digits: 4
+                    blocks:
+                      - - 1000
+                        - 5399
+                    sameName: []
+                    codes:
+                      total: 1456
+                      provisional: 1456
+                      confirmed: 0
+                      retired: 0
+                    numbers:
+                      capacity: 4400
+                      used: 1456
+                      free: 2944
+        "404":
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                area-unknown:
+                  value:
+                    error:
+                      code: unknown_area
+                      message: There is no area KMC-9999. Area ids look like KMC-0001.
+components:
+  schemas:
+    Error:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: object
+          required:
+            - code
+            - message
+          properties:
+            code:
+              type: string
+              description: "Stable error code, for programs"
+            message:
+              type: string
+              description: "Explanation, for people"
+            existing:
+              $ref: "#/components/schemas/Card"
+              description: "On 409 exists: the code the building already has"
+    Health:
+      type: object
+      required:
+        - status
+        - country
+        - codes
+      properties:
+        status:
+          type: string
+          enum:
+            - ok
+        country:
+          type: string
+        codes:
+          type: integer
+        registryExported:
+          type:
+            - string
+            - "null"
+          format: date-time
+        issuing:
+          type: boolean
+          description: Whether this deployment issues codes
+    Zone:
+      type: object
+      required:
+        - key
+        - name
+      properties:
+        key:
+          type: string
+          enum:
+            - BJL
+            - CRR
+            - KMC
+            - LRR
+            - NBR
+            - URR
+            - WCR
+        index:
+          type: integer
+        name:
+          type: string
+        iso:
+          type:
+            - string
+            - "null"
+          description: ISO 3166-2 code
+        codes:
+          type: integer
+        areas:
+          type: integer
+    Info:
+      type: object
+      properties:
+        country:
+          type: string
+        name:
+          type: string
+        zones:
+          type: array
+          items:
+            $ref: "#/components/schemas/Zone"
+        counts:
+          type: object
+          properties:
+            codes:
+              type: integer
+            byStatus:
+              type: object
+              additionalProperties:
+                type: integer
+            byIssue:
+              type: object
+              additionalProperties:
+                type: integer
+            areas:
+              type: integer
+            structures:
+              type: integer
+        registry:
+          type: object
+          properties:
+            exported:
+              type:
+                - string
+                - "null"
+            imported:
+              type:
+                - string
+                - "null"
+            engine:
+              type:
+                - string
+                - "null"
+        spec:
+          type: string
+        licences:
+          type: object
+          additionalProperties:
+            type: string
+        credit:
+          type: string
+        source:
+          type: string
+          format: uri
+        issuing:
+          type: boolean
+        example:
+          type: object
+          properties:
+            home:
+              type: string
+            machine:
+              type: string
+    AreaRef:
+      type: object
+      properties:
+        id:
+          type: string
+          examples:
+            - KMC-0001
+        plateName:
+          type: string
+        officialName:
+          type:
+            - string
+            - "null"
+        nameProvisional:
+          type: boolean
+        nearTown:
+          type:
+            - string
+            - "null"
+    ShortCard:
+      type: object
+      required:
+        - machine
+        - home
+        - written
+        - status
+        - entrance
+        - plusCode
+      properties:
+        machine:
+          type: string
+          description: "Machine form, with the check digit"
+          pattern: "^GM-[A-Z]{3}-\\d{4}-[1-9]\\d{2,4}-\\d$"
+        home:
+          type: string
+          description: Remembered form
+        written:
+          type: string
+          description: Written form for plates and forms (no check digit)
+        spoken:
+          type: string
+        status:
+          type: string
+          enum:
+            - provisional
+            - confirmed
+            - retired
+        issued:
+          type: string
+          enum:
+            - bulk
+            - on-demand
+        issuedAt:
+          type: string
+          format: date-time
+        officialAddress:
+          type: string
+        coverage:
+          type: string
+        area:
+          $ref: "#/components/schemas/AreaRef"
+        zone:
+          type: object
+          properties:
+            key:
+              type: string
+            name:
+              type: string
+            iso:
+              type:
+                - string
+                - "null"
+        number:
+          type: integer
+        check:
+          type: integer
+          minimum: 0
+          maximum: 9
+        entrance:
+          type: object
+          properties:
+            lat:
+              type: number
+            lng:
+              type: number
+            kind:
+              type: string
+              enum:
+                - gate
+                - door
+                - centre
+        centre:
+          type: object
+          required:
+            - lat
+            - lng
+          properties:
+            lat:
+              type: number
+            lng:
+              type: number
+        plusCode:
+          type: string
+        spot:
+          type: object
+          properties:
+            code:
+              type: string
+            short:
+              type: string
+            withTown:
+              type: string
+        distanceM:
+          type: number
+          description: Only in /v1/near
+    Structure:
+      type: object
+      properties:
+        index:
+          type: integer
+        id:
+          type: string
+        use:
+          type: string
+        confidence:
+          type: number
+        source:
+          type: string
+        status:
+          type: string
+        footprintM2:
+          type: number
+        perimeterM:
+          type: number
+        heightM:
+          type: number
+        heightSource:
+          type: string
+        floors:
+          type: integer
+        floorAreaM2:
+          type: number
+        name:
+          type: string
+          description: Only for buildings that are not homes
+        data:
+          type: string
+          enum:
+            - osm
+            - ml
+            - people
+    Card:
+      allOf:
+        - $ref: "#/components/schemas/ShortCard"
+        - type: object
+          properties:
+            compound:
+              type: object
+              properties:
+                class:
+                  type:
+                    - string
+                    - "null"
+                use:
+                  type: string
+                kind:
+                  type: string
+                structures:
+                  type: integer
+                floorAreaM2:
+                  type: number
+                rule:
+                  type:
+                    - string
+                    - "null"
+                enclosed:
+                  type: boolean
+            postcode:
+              type:
+                - string
+                - "null"
+            structures:
+              type: array
+              items:
+                $ref: "#/components/schemas/Structure"
+            registry:
+              type: object
+              description: "The code's row in registry/<zone>.csv.gz, column by column"
+              additionalProperties:
+                type: string
+            credit:
+              type: string
+    Find:
+      type: object
+      required:
+        - query
+        - kind
+        - results
+      properties:
+        query:
+          type: string
+        kind:
+          type: string
+          enum:
+            - remembered
+            - machine
+            - official
+            - plus
+        results:
+          type: array
+          items:
+            $ref: "#/components/schemas/Card"
+    Spot:
+      type: object
+      properties:
+        code:
+          type: string
+        short:
+          type: string
+        withTown:
+          type:
+            - string
+            - "null"
+        zone:
+          type:
+            - string
+            - "null"
+        area:
+          type:
+            - string
+            - "null"
+        cell:
+          type: object
+          properties:
+            south:
+              type: number
+            west:
+              type: number
+            north:
+              type: number
+            east:
+              type: number
+    At:
+      type: object
+      required:
+        - status
+      properties:
+        status:
+          type: string
+          enum:
+            - found
+            - none
+            - outside
+        distanceM:
+          type: integer
+        code:
+          $ref: "#/components/schemas/Card"
+        zone:
+          type: object
+          properties:
+            key:
+              type: string
+            name:
+              type: string
+        area:
+          $ref: "#/components/schemas/AreaSummary"
+        spot:
+          $ref: "#/components/schemas/Spot"
+        point:
+          type: object
+          required:
+            - lat
+            - lng
+          properties:
+            lat:
+              type: number
+            lng:
+              type: number
+        message:
+          type: string
+    Near:
+      type: object
+      properties:
+        point:
+          type: object
+          required:
+            - lat
+            - lng
+          properties:
+            lat:
+              type: number
+            lng:
+              type: number
+        radiusM:
+          type: number
+        count:
+          type: integer
+        codes:
+          type: array
+          items:
+            $ref: "#/components/schemas/ShortCard"
+    Verify:
+      type: object
+      required:
+        - code
+        - valid
+        - issued
+      properties:
+        code:
+          type: string
+        valid:
+          type: boolean
+        reason:
+          type:
+            - string
+            - "null"
+        issued:
+          type: boolean
+        status:
+          type:
+            - string
+            - "null"
+        home:
+          type: string
+        written:
+          type: string
+    SpotDecode:
+      type: object
+      properties:
+        query:
+          type: string
+        cells:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+              centre:
+                type: object
+                required:
+                  - lat
+                  - lng
+                properties:
+                  lat:
+                    type: number
+                  lng:
+                    type: number
+              cell:
+                type: object
+              zone:
+                type:
+                  - string
+                  - "null"
+              area:
+                type:
+                  - string
+                  - "null"
+              codes:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ShortCard"
+    AreaSummary:
+      type: object
+      properties:
+        id:
+          type: string
+        zone:
+          type: string
+        plateName:
+          type: string
+        officialName:
+          type:
+            - string
+            - "null"
+        kind:
+          type: string
+        position:
+          type: object
+          required:
+            - lat
+            - lng
+          properties:
+            lat:
+              type: number
+            lng:
+              type: number
+        codes:
+          type: integer
+    Area:
+      type: object
+      properties:
+        id:
+          type: string
+        zone:
+          type: string
+        plateName:
+          type: string
+        officialName:
+          type:
+            - string
+            - "null"
+        kind:
+          type: string
+        position:
+          type: object
+          required:
+            - lat
+            - lng
+          properties:
+            lat:
+              type: number
+            lng:
+              type: number
+        zoneName:
+          type: string
+        aliases:
+          type: array
+          items:
+            type: string
+        nearTown:
+          type:
+            - string
+            - "null"
+        nameProvisional:
+          type: boolean
+        coverage:
+          type:
+            - string
+            - "null"
+        nameKey:
+          type: string
+        family:
+          type: integer
+        digits:
+          type: integer
+          enum:
+            - 3
+            - 4
+            - 5
+        blocks:
+          type: array
+          items:
+            type: array
+            items:
+              type: integer
+            minItems: 2
+            maxItems: 2
+        sameName:
+          type: array
+          items:
+            type: string
+        codes:
+          type: object
+          properties:
+            total:
+              type: integer
+            provisional:
+              type: integer
+            confirmed:
+              type: integer
+            retired:
+              type: integer
+        numbers:
+          type: object
+          properties:
+            capacity:
+              type: integer
+            used:
+              type: integer
+            free:
+              type: integer
+    Areas:
+      type: object
+      properties:
+        name:
+          type: string
+        areas:
+          type: array
+          items:
+            $ref: "#/components/schemas/AreaSummary"
+    Zones:
+      type: object
+      properties:
+        zones:
+          type: array
+          items:
+            $ref: "#/components/schemas/Zone"
+    ZoneDetail:
+      type: object
+      properties:
+        key:
+          type: string
+        index:
+          type: integer
+        name:
+          type: string
+        iso:
+          type:
+            - string
+            - "null"
+        codes:
+          type: integer
+        areas:
+          type: array
+          items:
+            $ref: "#/components/schemas/AreaSummary"
+    ZoneCodes:
+      type: object
+      properties:
+        zone:
+          type: string
+        codes:
+          type: array
+          items:
+            $ref: "#/components/schemas/ShortCard"
+        next:
+          type:
+            - string
+            - "null"
+          description: "Pass as `after` for the next page; null on the last"
+    IssueRequest:
+      type: object
+      required:
+        - lat
+        - lng
+      properties:
+        lat:
+          type: number
+        lng:
+          type: number
+        outline:
+          type: array
+          description: "The building, as [lng, lat] pairs (12 m² to 2 ha)"
+          items:
+            type: array
+            items:
+              type: number
+            minItems: 2
+            maxItems: 2
+        of:
+          type: string
+          description: Machine code of the compound this is another door of (within 80 m of its entrance)
+    PatchRequest:
+      type: object
+      minProperties: 1
+      properties:
+        status:
+          type: string
+          enum:
+            - provisional
+            - confirmed
+            - retired
+        entrance:
+          type: object
+          required:
+            - lat
+            - lng
+          properties:
+            lat:
+              type: number
+            lng:
+              type: number
+          description: "The new entrance, at most 80 m away"
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: One of the keys in ISSUE_KEYS. Only for POST and PATCH.

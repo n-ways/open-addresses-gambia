@@ -1,0 +1,20 @@
+# docker compose up -d     a read-only deployment of the published registry on http://localhost:8080/v1
+#
+# To issue codes (only a deployment designated as the issuer: see server/README.md),
+# set ISSUE_KEYS in a .env file next to this one, never in this file.
+services:
+  addresses:
+    build: .
+    image: n-ways-addresses-gm
+    restart: unless-stopped
+    ports:
+      - "${PORT:-8080}:8080"
+    environment:
+      ISSUE_KEYS: ${ISSUE_KEYS:-}
+      ISSUE_PER_DAY: ${ISSUE_PER_DAY:-500}
+      CORS_ORIGINS: ${CORS_ORIGINS:-*}
+    volumes:
+      - addresses-data:/data
+
+volumes:
+  addresses-data:

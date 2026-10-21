@@ -1,0 +1,28 @@
+% The Plus Code cells around the entrance of Bakau 2389 (7C55F8HC+9G6), with the building footprints nearby.
+% Metres from the south-west corner of the 10-character cell 7C55F8HC+9G; cell sizes from tools/paper_data.py.
+% Data: spot-footprints.dat.
+\documentclass[border=2mm]{standalone}
+\usepackage{fontspec}\setmainfont{LibertinusSans}[Extension=.otf,UprightFont=*-Regular,BoldFont=*-Bold]
+\usepackage{pgfplots}\pgfplotsset{compat=1.18, /pgf/number format/assume math mode=true}
+\definecolor{ink}{HTML}{0C1C8C}\definecolor{flagred}{HTML}{CE1126}\definecolor{flaggreen}{HTML}{3A7728}
+% \tr{English}{French}: the figure's language; <name>-fr.tex sets \figfr and inputs this file.
+\ifdefined\figfr\newcommand{\tr}[2]{#2}\pgfkeys{/pgf/number format/.cd, use comma, 1000 sep={\,}}\else\newcommand{\tr}[2]{#1}\fi
+\begin{document}
+\begin{tikzpicture}
+\pgfmathsetmacro{\cw}{13.53}\pgfmathsetmacro{\ch}{13.82}
+\begin{axis}[width=10cm, axis equal image, xmin=-40.5, xmax=54.1, ymin=-41.5, ymax=55.3, unbounded coords=jump,
+  tick label style={font=\scriptsize}, label style={font=\small},
+  xtick={-27.06,-13.53,0,13.53,27.06,40.59}, ytick={-27.64,-13.82,0,13.82,27.64,41.46},
+  xticklabels={$-2$,$-1$,0,1,2,3}, yticklabels={$-2$,$-1$,0,1,2,3}, xlabel={\tr{east, in 10-character cells (13.5 m)}{est, en cellules de 10 caractères (13,5 m)}},
+  ylabel={\tr{north, in 10-character cells (13.8 m)}{nord, en cellules de 10 caractères (13,8 m)}}, grid=major, grid style={ink!25}]
+\addplot[fill=black!18, draw=black!55, line width=0.3pt] table[x=x, y=y] {spot-footprints.dat};
+\foreach \i in {1,2,3} {\edef\t{\noexpand\draw[ink!60, line width=0.25pt] (axis cs:{\i*\cw/4},0) -- (axis cs:{\i*\cw/4},\ch);}\t}
+\foreach \j in {1,2,3,4} {\edef\t{\noexpand\draw[ink!60, line width=0.25pt] (axis cs:0,{\j*\ch/5}) -- (axis cs:\cw,{\j*\ch/5});}\t}
+\draw[ink, line width=0.9pt] (axis cs:0,0) rectangle (axis cs:\cw,\ch);
+\filldraw[fill=flagred!45, draw=flagred, line width=0.5pt] (axis cs:0,2.76) rectangle (axis cs:3.38,5.53);
+\fill[flagred] (axis cs:1.57,3.87) circle (1.6pt);
+\node[font=\scriptsize, ink, fill=white, inner sep=1pt, anchor=south west] at (axis cs:0.4,\ch) {F8HC+9G};
+\draw[flagred] (axis cs:1.57,3.87) -- (axis cs:-20,-20) node[below, font=\scriptsize, fill=white, inner sep=1pt] {\tr{entrance}{entrée}, F8HC+9G6};
+\end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,29 @@
+% By zone, largest first: (a) where the building footprints come from, (b) which grouping rule formed each compound.
+% Data: sources.dat (percentages).
+\documentclass[border=2mm]{standalone}
+\usepackage{fontspec}\setmainfont{LibertinusSans}[Extension=.otf,UprightFont=*-Regular,BoldFont=*-Bold]
+\usepackage{pgfplots}\pgfplotsset{compat=1.18, /pgf/number format/assume math mode=true}
+\definecolor{ink}{HTML}{0C1C8C}\definecolor{flagred}{HTML}{CE1126}\definecolor{flaggreen}{HTML}{3A7728}
+\usepgfplotslibrary{groupplots}
+% \tr{English}{French}: the figure's language; <name>-fr.tex sets \figfr and inputs this file.
+\ifdefined\figfr\newcommand{\tr}[2]{#2}\pgfkeys{/pgf/number format/.cd, use comma, 1000 sep={\,}}\else\newcommand{\tr}[2]{#1}\fi
+\begin{document}
+\begin{tikzpicture}
+\begin{groupplot}[group style={group size=2 by 1, horizontal sep=0.5cm, yticklabels at=edge left}, width=7.4cm, height=6cm,
+  xbar stacked, /pgf/bar width=0.42cm, xmin=0, xmax=100, ytick=data, yticklabels from table={sources.dat}{zone}, y dir=reverse,
+  tick label style={font=\scriptsize}, label style={font=\small}, title style={font=\small}, xlabel={\tr{share (\%)}{part (\%)}},
+  legend cell align=left, legend style={font=\scriptsize, at={(0.5,-0.3)}, anchor=north, legend columns=2, draw=none, /tikz/every even column/.append style={column sep=4pt}},
+  enlarge y limits=0.1]
+\nextgroupplot[title={\tr{(a) footprints by source}{(a) empreintes par source}}]
+\addplot[fill=ink, draw=none] table[x=osm, y expr=\coordindex] {sources.dat};
+\addplot[fill=ink!35, draw=none] table[x=ml, y expr=\coordindex] {sources.dat};
+\legend{OpenStreetMap, {\tr{machine-learned (Google, Microsoft)}{apprentissage automatique (Google, Microsoft)}}}
+\nextgroupplot[title={\tr{(b) compounds by grouping rule}{(b) concessions par règle de regroupement}}]
+\addplot[fill=flaggreen, draw=none] table[x=single, y expr=\coordindex] {sources.dat};
+\addplot[fill=flaggreen!45, draw=none] table[x=satellite, y expr=\coordindex] {sources.dat};
+\addplot[fill=orange!80!black, draw=none] table[x=concession, y expr=\coordindex] {sources.dat};
+\addplot[fill=flagred, draw=none] table[x=enclosure, y expr=\coordindex] {sources.dat};
+\legend{\tr{one structure}{une structure}, \tr{R1 satellite}{R1 annexe}, \tr{R2 rural concession}{R2 concession rurale}, \tr{R0 enclosure}{R0 enclos}}
+\end{groupplot}
+\end{tikzpicture}
+\end{document}
